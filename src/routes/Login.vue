@@ -7,7 +7,7 @@
           class="form-control"
           :style="{
             background: inputColor,
-            borderColor: inputColor,
+            borderColor: inputBorderColor,
             color: textColor
           }"
           placeholder="Username"
@@ -18,7 +18,7 @@
           class="form-control"
           :style="{
             background: inputColor,
-            borderColor: inputColor,
+            borderColor: inputBorderColor,
             color: textColor
           }"
           placeholder="Password"
@@ -58,6 +58,7 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
       // colors
       cardColor: colorScheme.cardColor,
       inputColor: colorScheme.inputColor,
+      inputBorderColor: colorScheme.inputBorderColor,
       buttonColor: colorScheme.buttonColor,
       textColor: colorScheme.textColor,
 
@@ -68,7 +69,7 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
   },
 
   methods: {
-    // on click login function
+    // on click login function-
     login(username, password) {
       const status = new RestService().login(username, password);
       console.log(status);

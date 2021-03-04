@@ -4,5 +4,6 @@ export interface ColorScheme {
   textColor: string;
   cardColor: string;
   inputColor: string;
+  inputBorderColor: string;
   buttonColor: string;
 }

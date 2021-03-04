@@ -6,5 +6,6 @@ export class Darkmode implements ColorScheme {
   textColor = "white";
   cardColor = "#222222";
   inputColor = "#2d2d2d";
+  inputBorderColor = "#2d2d2d";
   buttonColor = "#03397e";
 }
