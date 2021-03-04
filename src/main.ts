@@ -3,10 +3,12 @@ import App from "./App.vue";
 import Bootstrap from "bootstrap-vue";
 import Router from "vue-router";
 import VueResource from "vue-resource";
+import Notifications from "vue-notification";
 
 Vue.use(Bootstrap);
 Vue.use(Router);
 Vue.use(VueResource);
+Vue.use(Notifications);
 
 Vue.config.productionTip = false;
 

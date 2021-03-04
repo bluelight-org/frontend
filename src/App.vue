@@ -3,6 +3,7 @@
   <div id="app">
     <!-- router outlet component -->
     <router-view></router-view>
+    <notifications group="notification" position="bottom right" />
   </div>
 </template>
 

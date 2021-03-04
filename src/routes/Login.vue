@@ -32,7 +32,7 @@
               backgroundColor: buttonColor,
               borderColor: buttonColor
             }"
-            :click="login(usernameValue, passwordValue)"
+            v-on:click="login(usernameValue, passwordValue)"
           >
             Anmelden
           </button>
@@ -69,10 +69,20 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
   },
 
   methods: {
-    // on click login function-
+    // on click login function
     login(username, password) {
       const status = new RestService().login(username, password);
-      console.log(status);
+      if (!status) {
+        this.$notify({
+          group: "notification",
+          title: "login failed",
+          text: "wrong login credentials",
+          type: "error",
+          duration: 1000
+        });
+      } else {
+        location.href = "/dashboard";
+      }
     }
   }
 });
