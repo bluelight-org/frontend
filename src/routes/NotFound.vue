@@ -1,5 +1,5 @@
 <template>
-  <p>404 page not found</p>
+  <p class="not-found-text">404 page not found</p>
 </template>
 
 <script lang="ts">
@@ -8,4 +8,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.not-found-text {
+  font-family: "Montserrat", serif;
+  font-size: 6em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
