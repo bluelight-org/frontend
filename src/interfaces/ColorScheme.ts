@@ -3,4 +3,6 @@
 export interface ColorScheme {
     background: string;
     textColor: string;
+    cardColor: string;
+    inputColor: string;
 }

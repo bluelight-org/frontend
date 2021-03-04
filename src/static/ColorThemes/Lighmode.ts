@@ -4,4 +4,6 @@ import {ColorScheme} from "@/interfaces/ColorScheme";
 export class Lightmode implements ColorScheme {
     background: string = 'white';
     textColor: string = 'black';
+    cardColor: string = 'white';
+    inputColor: string = 'white';
 }
