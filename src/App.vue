@@ -4,33 +4,23 @@
     <!-- router outlet component -->
     <router-view></router-view>
   </div>
-
 </template>
 
 <script lang="ts">
-  import Router from './Router';
-  import {CookieService} from './services/CookieService';
+import Router from "./Router";
+import { CookieService } from "./services/CookieService";
 
-  export default {
-    name: 'app',
+export default {
+  name: "app",
 
-    data() {
-      return {};
-    },
+  created(): void {
+    // set color scheme
+    const colorScheme = new CookieService().getColorScheme();
+    document.body.style.backgroundColor = colorScheme.background;
+    document.body.style.color = colorScheme.textColor;
+  },
 
-    created() {
-      // set color scheme
-      let colorScheme = new CookieService().getColorScheme();
-      document.body.style.backgroundColor = colorScheme.background;
-      document.body.style.color = colorScheme.textColor;
-    },
-
-
-    // define router for app
-    router: Router
-  }
+  // define router for app
+  router: Router
+};
 </script>
-
-
-
-

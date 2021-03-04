@@ -2,12 +2,10 @@
   <p>404 page not found</p>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "NotFound"
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
