@@ -6,7 +6,7 @@
           <input class="form-control" v-bind:style="{background: inputColor, borderColor: inputColor}" placeholder="Username" type="text">
           <input class="form-control" v-bind:style="{background: inputColor, borderColor: inputColor}" placeholder="Password" type="password">
           <div class="d-flex flex-column">
-            <button class="btn btn-primary">Anmelden</button>
+            <button class="btn btn-primary" v-bind:style="{backgroundColor: buttonColor, borderColor: buttonColor}">Anmelden</button>
           </div>
       </div>
     </div>
@@ -23,7 +23,8 @@ export default {
     let colorScheme = new CookieService().getColorScheme();
     return {
       cardColor: colorScheme.cardColor,
-      inputColor: colorScheme.inputColor
+      inputColor: colorScheme.inputColor,
+      buttonColor: colorScheme.buttonColor
     }
   }
 }
@@ -49,7 +50,7 @@ export default {
   .btn {
     margin-top: 1em;
     padding: 13px;
-    margin-left: 20em;
-    margin-right: 20em;
+    margin-left: 30%;
+    margin-right: 30%;
   }
 </style>

@@ -6,4 +6,5 @@ export class Lightmode implements ColorScheme {
     textColor: string = 'black';
     cardColor: string = 'white';
     inputColor: string = 'white';
+    buttonColor: string = '#007bff';
 }
