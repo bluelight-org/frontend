@@ -36,6 +36,7 @@ export default {
   },
 
   methods: {
+    // on click login function
     login(username: string, password: string): void {
         let status = new RestService().login(username, password);
         console.log(status);
