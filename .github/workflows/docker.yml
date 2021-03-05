@@ -72,7 +72,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
 
-      - run: npm run build:ci -- --output-path=./dist
+      - run: npm run build -- --output-path=./dist
 
       - uses: actions/upload-artifact@v2
         with:
