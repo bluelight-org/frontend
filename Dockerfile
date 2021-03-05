@@ -1,9 +1,11 @@
+FROM alpine:latest
 FROM node:14.15.4
-FROM alpine:3.9.3
 
 WORKDIR /build
 
 COPY . .
+
+RUN apk add --update npm
 
 RUN npm ci
 RUN npm run build
