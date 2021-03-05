@@ -1,4 +1,5 @@
 FROM node:14.15.4
+FROM alpine:3.9.3
 
 WORKDIR /build
 
