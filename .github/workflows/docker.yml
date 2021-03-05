@@ -84,16 +84,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Docker publish
-        with:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+      - name: Docker publis
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
         run: |
           docker build . -t mathisburger/bluelight-frontend:latest
-          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker push mathisburger/bluelight-frontend:latest
 
