@@ -91,6 +91,6 @@ jobs:
 
         run: |
           docker build . -t mathisburger/bluelight-frontend:latest
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
           docker push mathisburger/bluelight-frontend:latest
 
