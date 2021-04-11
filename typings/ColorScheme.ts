@@ -6,4 +6,5 @@ export interface ColorScheme {
   inputColor: string;
   inputBorderColor: string;
   buttonColor: string;
+  navbarColor: string;
 }

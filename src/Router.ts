@@ -2,6 +2,7 @@ import Router from "vue-router";
 
 import Login from "./routes/Login.vue";
 import NotFound from "./routes/NotFound.vue";
+import Dashboard from "./routes/Dashboard.vue";
 
 export default new Router({
   mode: "history",
@@ -12,6 +13,11 @@ export default new Router({
       path: "/login",
       name: "Login",
       component: Login
+    },
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      component: Dashboard
     },
     {
       path: "*",
