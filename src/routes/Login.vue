@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { CookieService } from "@/services/CookieService";
+import { getColorScheme } from "@/services/StorageService";
 import { RestService } from "@/services/RestService";
 import { LoginData, LoginMethods } from "typings/routes/Login";
 import { DefaultProps } from "vue/types/options";
@@ -53,7 +53,7 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
   name: "Login",
 
   data() {
-    const colorScheme = new CookieService().getColorScheme();
+    const colorScheme = getColorScheme();
     return {
       // colors
       cardColor: colorScheme.cardColor,
@@ -70,7 +70,7 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
 
   methods: {
     // on click login function
-    login(username, password) {
+    login(username, password): void {
       const status = new RestService().login(username, password);
       if (!status) {
         this.$notify({

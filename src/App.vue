@@ -9,14 +9,14 @@
 
 <script lang="ts">
 import Router from "./Router";
-import { CookieService } from "./services/CookieService";
+import { getColorScheme } from "./services/StorageService";
 
 export default {
   name: "app",
 
   created(): void {
     // set color scheme
-    const colorScheme = new CookieService().getColorScheme();
+    const colorScheme = getColorScheme();
     document.body.style.backgroundColor = colorScheme.background;
     document.body.style.color = colorScheme.textColor;
   },
