@@ -27,7 +27,7 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" id="navbar-dashboard">
+        <li :class="['nav-item', this.active == 'dashboard' ? 'active' : '']">
           <a class="nav-link" href="/dashboard"
             >Dashboard <span class="sr-only">(current)</span>
           </a>
@@ -54,8 +54,14 @@ import {
   NavbarMethods,
   NavbarProps
 } from "typings/components/Navbar";
+import { DefaultComputed } from "vue/types/options";
 
-export default Vue.extend<NavbarData, NavbarMethods, NavbarProps>({
+export default Vue.extend<
+  NavbarData,
+  NavbarMethods,
+  DefaultComputed,
+  NavbarProps
+>({
   name: "Navbar",
   data() {
     const colorScheme = getColorScheme();
@@ -67,14 +73,11 @@ export default Vue.extend<NavbarData, NavbarMethods, NavbarProps>({
   },
   methods: {},
 
-  mounted: function() {
-    console.log(this.active);
-    this.$nextTick(function() {
-      console.log(this.active);
-      const el = document.getElementById("navbar-" + this.active);
-      if (el === null) alert("Fehler beim laden der navbar");
-      else el.classList.add("active");
-    });
+  props: {
+    active: {
+      type: String,
+      required: true
+    }
   }
 });
 </script>
