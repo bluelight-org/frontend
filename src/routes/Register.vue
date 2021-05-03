@@ -49,6 +49,7 @@
           >
             register
           </button>
+          <a href="/login">Login</a>
         </div>
       </div>
     </div>
@@ -133,5 +134,11 @@ input::placeholder {
   padding: 13px;
   margin-left: 30%;
   margin-right: 30%;
+}
+
+a {
+  display: grid;
+  place-items: center;
+  margin-top: 10px;
 }
 </style>
