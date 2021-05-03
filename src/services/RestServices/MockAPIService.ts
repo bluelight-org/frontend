@@ -17,9 +17,6 @@ export class MockAPIService implements RestServiceInterface {
     password: string,
     retypePassword: string
   ): Promise<[boolean, string]> {
-    return new Promise<[boolean, string]>(() => [
-      false,
-      username + password + retypePassword
-    ]);
+    return [password === retypePassword, username];
   }
 }

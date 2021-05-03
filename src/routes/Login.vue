@@ -71,18 +71,19 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
   methods: {
     // on click login function
     login(username, password): void {
-      const status = new RestService().login(username, password);
-      if (!status) {
-        this.$notify({
-          group: "notification",
-          title: "login failed",
-          text: "wrong login credentials",
-          type: "error",
-          duration: 1000
-        });
-      } else {
-        location.href = "/dashboard";
-      }
+      new RestService().login(username, password).then(data => {
+        if (!data) {
+          this.$notify({
+            group: "notification",
+            title: "login failed",
+            text: "wrong login credentials",
+            type: "error",
+            duration: 1000
+          });
+        } else {
+          location.href = "/dashboard";
+        }
+      });
     }
   }
 });

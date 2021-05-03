@@ -85,22 +85,27 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
   methods: {
     // on click login function
     register(username: string, password: string, retypePassword: string): void {
-      const status = new RestService().register(
-        username,
-        password,
-        retypePassword
-      );
-      if (!status) {
-        this.$notify({
-          group: "notification",
-          title: "login failed",
-          text: "wrong login credentials",
-          type: "error",
-          duration: 1000
+      new RestService()
+        .register(username, password, retypePassword)
+        .then(data => {
+          if (!data[0]) {
+            this.$notify({
+              group: "notification",
+              title: "registration failed",
+              text: data[1],
+              type: "error",
+              duration: 1000
+            });
+          } else {
+            this.$notify({
+              group: "notification",
+              title: "registration was successful",
+              text: data[1],
+              type: "success",
+              duration: 1000
+            });
+          }
         });
-      } else {
-        location.href = "/dashboard";
-      }
     }
   }
 });
