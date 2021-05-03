@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { RestServiceInterface } from "../../../typings/RestServiceInterface";
 
 // wrapper for the API
