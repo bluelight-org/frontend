@@ -18,27 +18,19 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" height="100">
 </div>
 
----
 
 ## Information
-
----
 
 Bluelight is built to provide an fast and open source alerting system for
 fire departments.
 
 ## Technical background
 
----
-
 The bluelight frontend uses VueJS, because it is lightweight, powerful and very fast.
 We are using Vue in combination with TypeScript, because TypeScript is very scalable
 and perfect for projects with a large codebase. 
 
-
 ## Usage
-
----
 
 There is an hosted version of Bluelight available on URL, which is easier to use,
 because we are maintaining it for you. Nevertheless you can host it yourself. But this
