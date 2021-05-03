@@ -11,5 +11,5 @@ export interface RegisterData {
 }
 
 export interface RegisterMethods {
-  register(username: string, password: string, retypePassword: string): [boolean, string];
+  register(username: string, password: string, retypePassword: string): void;
 }

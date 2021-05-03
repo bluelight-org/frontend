@@ -1,5 +1,5 @@
 // Interface for REST services
 export interface RestServiceInterface {
-  login(username: string, password: string): boolean;
-  register(username: string, password: string, retypePassword: string): [boolean, string];
+  login(username: string, password: string): Promise<boolean>;
+  register(username: string, password: string, retypePassword: string): Promise<[boolean, string]>;
 }

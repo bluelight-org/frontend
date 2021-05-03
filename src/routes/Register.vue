@@ -84,8 +84,12 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
 
   methods: {
     // on click login function
-    register(username, password, retypePassword): [boolean, string] {
-      const status = new RestService().login(username, password);
+    register(username: string, password: string, retypePassword: string): void {
+      const status = new RestService().register(
+        username,
+        password,
+        retypePassword
+      );
       if (!status) {
         this.$notify({
           group: "notification",
