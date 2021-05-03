@@ -10,6 +10,8 @@
 <img src="https://img.shields.io/docker/pulls/mathisburger/bluelight-frontend?style=for-the-badge">
 </div>
 
+<hr>
+
 <div align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2000px-Vue.js_Logo_2.svg.png" height="100">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" height="100">
