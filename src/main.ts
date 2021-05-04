@@ -12,7 +12,7 @@ Vue.use(Router);
 Vue.use(VueResource);
 Vue.use(Notifications);
 
-Vue.component("font-awsome-icon", FontAwesomeIcon);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 initIcons();
 
