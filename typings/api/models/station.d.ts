@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export interface SmallStation {
   id: number;
   name: string;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ResponseMetaData } from "../models/meta";
 import { ErrorModel } from "../models/error";
 

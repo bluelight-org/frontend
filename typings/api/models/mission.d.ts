@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export interface SmallMission {
   id: number;
   keyword: string;

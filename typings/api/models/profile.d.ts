@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export interface SmallProfile {
   name: string;
   email: string;

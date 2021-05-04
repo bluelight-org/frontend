@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RestServiceInterface } from "../../../typings/RestServiceInterface";
 import { ErrorResponse } from "../../../typings/api/responses/ErrorResponse";
 import {
