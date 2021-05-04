@@ -7,4 +7,5 @@ export interface ColorScheme {
   inputBorderColor: string;
   buttonColor: string;
   navbarColor: string;
+  themeTogglerColor: string;
 }

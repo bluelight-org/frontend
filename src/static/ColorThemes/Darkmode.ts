@@ -9,4 +9,5 @@ export class Darkmode implements ColorScheme {
   inputBorderColor = "#2d2d2d";
   buttonColor = "#03397e";
   navbarColor = "#AD0202";
+  themeTogglerColor = "#cdcdcd";
 }

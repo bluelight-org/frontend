@@ -9,4 +9,5 @@ export class Lightmode implements ColorScheme {
   inputBorderColor = "#ced4da";
   buttonColor = "#007bff";
   navbarColor = "#EA0000";
+  themeTogglerColor = "#3e3e3e";
 }
