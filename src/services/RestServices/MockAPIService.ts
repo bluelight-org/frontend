@@ -1,33 +1,30 @@
 /* eslint-disable */
 import { RestServiceInterface } from "../../../typings/RestServiceInterface";
 import { ErrorResponse } from "../../../typings/api/responses/ErrorResponse";
-import {
-  CreateMission,
-  generateCreateMissionMock
-} from "../../../typings/api/responses/createMission";
-import {
-  CreateProfile,
-  generateCreateProfileMock
-} from "../../../typings/api/responses/createProfile";
-import {
-  CreateStation,
-  generateCreateStationMock
-} from "../../../typings/api/responses/createStation";
-import {
-  CreateVehicle,
-  generateCreateVehicleMock
-} from "../../../typings/api/responses/createVehicle";
-import {
-  generateGetAllMissionsResponseMock,
-  GetAllMissionsResponse
-} from "../../../typings/api/responses/getAllMissions";
-import { generateGetAllStationsMock, GetAllStations } from "../../../typings/api/responses/getAllStations";
-import { generateGetAllVehiclesMock, GetAllVehicles } from "../../../typings/api/responses/getAllVehicles";
-import { generateGetMissionMock, GetMission } from "../../../typings/api/responses/getMission";
-import { generateGetStationMock, GetStation } from "../../../typings/api/responses/getStation";
-import { generateUpdateMissionMock, UpdateMission } from "../../../typings/api/responses/updateMission";
-import { generateUpdateProfileMock, UpdateProfile } from "../../../typings/api/responses/updateProfile";
-import { generateUpdateStationMock, UpdateStation } from "../../../typings/api/responses/updateStation";
+import { CreateMission } from "../../../typings/api/responses/createMission";
+import { generateCreateMissionMock } from "@/mock/api/responses/createMission";
+import { CreateProfile } from "../../../typings/api/responses/createProfile";
+import { generateCreateProfileMock } from "@/mock/api/responses/createProfile";
+import { CreateStation } from "../../../typings/api/responses/createStation";
+import { generateCreateStationMock } from "@/mock/api/responses/createStation";
+import { CreateVehicle } from "../../../typings/api/responses/createVehicle";
+import { generateCreateVehicleMock } from "@/mock/api/responses/createVehicle";
+import { GetAllMissionsResponse } from "../../../typings/api/responses/getAllMissions";
+import { generateGetAllMissionsResponseMock } from "@/mock/api/responses/getAllMissions";
+import { GetAllStations } from "../../../typings/api/responses/getAllStations";
+import { generateGetAllStationsMock } from "@/mock/api/responses/getAllStations";
+import { GetAllVehicles } from "../../../typings/api/responses/getAllVehicles";
+import { generateGetAllVehiclesMock } from "@/mock/api/responses/getAllVehicles";
+import { GetMission } from "../../../typings/api/responses/getMission";
+import { generateGetMissionMock } from "@/mock/api/responses/getMission";
+import { GetStation } from "../../../typings/api/responses/getStation";
+import { generateGetStationMock } from "@/mock/api/responses/getStation";
+import { UpdateMission } from "../../../typings/api/responses/updateMission";
+import { generateUpdateMissionMock } from "@/mock/api/responses/updateMission";
+import { UpdateProfile } from "../../../typings/api/responses/updateProfile";
+import { generateUpdateProfileMock } from "@/mock/api/responses/updateProfile";
+import { UpdateStation } from "../../../typings/api/responses/updateStation";
+import { generateUpdateStationMock } from "@/mock/api/responses/updateStation";
 
 // mock service || simulates API responses
 export class MockAPIService implements RestServiceInterface {
