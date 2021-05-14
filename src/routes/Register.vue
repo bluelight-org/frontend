@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card align-content-center" :style="{ background: cardColor }">
       <div class="card-body" :style="{ background: cardColor }">
-        <h1 class="card-title">Login</h1>
+        <h1 class="card-title">Register</h1>
         <input
           class="form-control"
           :style="{
@@ -21,9 +21,20 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="Password"
+          placeholder="password"
           type="password"
           v-model="passwordValue"
+        />
+        <input
+          class="form-control"
+          :style="{
+            background: inputColor,
+            borderColor: inputBorderColor,
+            color: textColor
+          }"
+          placeholder="retype password"
+          type="password"
+          v-model="passwordRetypeValue"
         />
         <div class="d-flex flex-column">
           <button
@@ -32,11 +43,13 @@
               backgroundColor: buttonColor,
               borderColor: buttonColor
             }"
-            v-on:click="login(usernameValue, passwordValue)"
+            v-on:click="
+              register(usernameValue, passwordValue, passwordRetypeValue)
+            "
           >
-            Anmelden
+            register
           </button>
-          <a href="/register">Register</a>
+          <a href="/login">Login</a>
         </div>
       </div>
     </div>
@@ -47,11 +60,11 @@
 import Vue from "vue";
 import { getColorScheme } from "@/services/StorageService";
 import { RestService } from "@/services/RestService";
-import { LoginData, LoginMethods } from "typings/routes/Login";
+import { RegisterData, RegisterMethods } from "typings/routes/Register";
 import { DefaultProps } from "vue/types/options";
 
-export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
-  name: "Login",
+export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
+  name: "Register",
 
   data() {
     const colorScheme = getColorScheme();
@@ -65,26 +78,35 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
 
       // input values
       usernameValue: "",
-      passwordValue: ""
+      passwordValue: "",
+      passwordRetypeValue: ""
     };
   },
 
   methods: {
     // on click login function
-    login(username, password): void {
-      new RestService().login(username, password).then(data => {
-        if (!data) {
-          this.$notify({
-            group: "notification",
-            title: "login failed",
-            text: "wrong login credentials",
-            type: "error",
-            duration: 1000
-          });
-        } else {
-          location.href = "/dashboard";
-        }
-      });
+    register(username: string, password: string, retypePassword: string): void {
+      new RestService()
+        .register(username, password, retypePassword)
+        .then(data => {
+          if (!data[0]) {
+            this.$notify({
+              group: "notification",
+              title: "registration failed",
+              text: data[1],
+              type: "error",
+              duration: 1000
+            });
+          } else {
+            this.$notify({
+              group: "notification",
+              title: "registration was successful",
+              text: data[1],
+              type: "success",
+              duration: 1000
+            });
+          }
+        });
     }
   }
 });
@@ -113,6 +135,7 @@ input::placeholder {
   margin-left: 30%;
   margin-right: 30%;
 }
+
 a {
   display: grid;
   place-items: center;
