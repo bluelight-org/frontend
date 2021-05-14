@@ -4,10 +4,12 @@ WORKDIR /build
 
 COPY . .
 
-RUN npm ci
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 RUN npm i -g serve
+
+RUN rm -r ./node_modules
 
 EXPOSE 5000
 
