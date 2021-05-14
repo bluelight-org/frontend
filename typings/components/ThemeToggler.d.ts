@@ -11,6 +11,7 @@ export interface ThemeTogglerData {
 export interface ThemeTogglerMethods {
   getActiveColorScheme(): string;
   getToggleButtonFilter(theme: string): string;
+  getIconColor(): string;
   changeTheme(theme: string): void;
 }
 

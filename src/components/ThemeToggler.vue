@@ -6,11 +6,13 @@
         'background: ' +
           togglerColor +
           ';filter: ' +
-          getToggleButtonFilter('light')
+          getToggleButtonFilter('light') +
+          ';color: ' +
+          getIconColor()
       "
       v-on:click="changeTheme('light')"
     >
-      <font-awesome-icon :icon="lightIcon" :fixed-width="true" />
+      <font-awesome-icon :icon="lightIcon" size="2x" />
     </button>
     <button
       class="togglerButton"
@@ -18,16 +20,13 @@
         'background: ' +
           togglerColor +
           ';filter: ' +
-          getToggleButtonFilter('dark')
+          getToggleButtonFilter('dark') +
+          ';color: ' +
+          getIconColor()
       "
       v-on:click="changeTheme('dark')"
     >
-      <font-awesome-icon
-        :icon="darkIcon"
-        size="3x"
-        spin
-        fixed-width
-      ></font-awesome-icon>
+      <font-awesome-icon :icon="darkIcon" size="2x"></font-awesome-icon>
     </button>
   </div>
 </template>
@@ -64,6 +63,9 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
       if (this.getActiveColorScheme() === theme) return "brightness(1.6)";
       else return "none";
     },
+    getIconColor(): string {
+      return this.getActiveColorScheme() === "dark" ? "black" : "white";
+    },
     changeTheme(theme: string): void {
       if (this.getActiveColorScheme() !== theme) {
         localStorage.setItem("color-scheme", theme);
@@ -91,8 +93,8 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   padding: 10px;
 }
 .togglerButton {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   border-radius: 5px;
   background: none;
   border: none;
