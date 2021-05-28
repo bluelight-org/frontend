@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+import { AccessToken } from "./../../../typings/api/models/accessToken.d";
 import { RestServiceInterface } from "../../../typings/RestServiceInterface";
 import { ErrorResponse } from "../../../typings/api/responses/ErrorResponse";
 import { CreateProfile } from "../../../typings/api/responses/createProfile";
@@ -14,6 +14,8 @@ import { GetStation } from "../../../typings/api/responses/getStation";
 import { UpdateProfile } from "../../../typings/api/responses/updateProfile";
 import { UpdateStation } from "../../../typings/api/responses/updateStation";
 import { UpdateMission } from "../../../typings/api/responses/updateMission";
+
+const PREFIX = process.env.NODE_ENV === "development" ? "http://127.0.0.1:8080/api": "/api";
 
 // wrapper for the API
 export class RestAPIService implements RestServiceInterface {
@@ -100,4 +102,115 @@ export class RestAPIService implements RestServiceInterface {
   updateStation(name: string, latitude: number, longitude: number): Promise<UpdateStation | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
+
+
+  // ----------------------------------------------------
+  // Downside are all functions needed for the
+  // refresh token implementation of the bluelight frontend
+  // for the communication with the bluelight frontend
+  // ----------------------------------------------------
+
+    private static accessToken: AccessToken;
+
+    // This function fetches a new accessToken from the 
+    // backend, if the old expired
+    private static getAccessToken(): Promise<AccessToken> {
+        return this.get<AccessToken>("/auth/accesstoken?username=" + localStorage.getItem("username"));
+    }
+
+    private static get<T>(path: string, emitError: boolean = true, blob: boolean = false): Promise<T> {
+        return this.req<T>("GET", path, undefined, undefined, emitError, 0, blob);
+    }
+
+    private static post<T>(
+        path: string,
+        body?: any,
+        emitError: boolean = true,
+        contentType: string | undefined = "application/json"
+    ): Promise<T> {
+        return this.req<T>("POST", path, body, contentType, emitError);
+    }
+
+
+    private static async req<T>(
+        method: string,
+        path: string,
+        body?: any,
+        contentType: string | undefined = "application/json",
+        emitError: boolean = true,
+        counter: number = 0,
+        blob: boolean = false
+    ): Promise<T> {
+
+        if (this.accessToken && new Date(+this.accessToken.deadline * 1000) < new Date()) {
+            try {
+                if (counter > 3) {
+                    return "expired" as any;
+                }
+                this.accessToken = await this.getAccessToken();
+                let newCounter = counter + 1;
+                return this.req(method, path, body, contentType, emitError, newCounter, blob);
+            } catch (e) {
+                throw e;
+            }
+        }
+
+        let reqBody = undefined;
+        if (body) {
+            if (typeof body !== "string" && contentType === "application/json") {
+                reqBody = JSON.stringify(body);
+            } else {
+                reqBody = body;
+            }
+        }
+
+        const headers: { [key: string]: string } = {};
+        if (contentType !== "multipart/form-data") {
+            headers["content-type"] = contentType;
+        }
+
+        if (this.accessToken) {
+            headers["authorization"] = "accessToken " + this.accessToken.token;
+        }
+
+        const res = await window.fetch(`${PREFIX}${path}`, {
+            method,
+            headers,
+            body: reqBody,
+            credentials: "include",
+            mode: process.env.NODE_ENV === "development" ? "cors" : "same-origin"
+        });
+
+        if (res.status === 401) {
+            try {
+                if (!blob) {
+                    const resBody = (await res.json()) as ErrorResponse;
+                    if (resBody.error.message[0] === "invalid access token") {
+                        this.accessToken = await this.getAccessToken();
+                        if (counter < 3) {
+                            return this.req(method, path, body, contentType, emitError, counter + 1, blob);
+                        } else {
+                            return resBody as any;
+                        }
+                    }
+                } else {
+                    this.accessToken = await this.getAccessToken();
+                    if (counter < 3) {
+                        return this.req(method, path, body, contentType, emitError, counter + 1, blob);
+                    } else {
+                        return null as any;
+                    }
+                }
+            } catch {}
+        }
+
+        if (res.status === 204 || res.headers.get("content-length") === "0") {
+            return {} as T;
+        }
+        if (blob) {
+            return await res.blob() as any;
+        } else {
+            return res.json();
+        }
+    }
 }
