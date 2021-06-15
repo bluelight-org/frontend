@@ -29,6 +29,7 @@
           </label>
         </div>
       </div>
+      <div v-for=""></div>
     </div>
   </div>
 </template>
@@ -36,10 +37,20 @@
 <script>
 import Vue from "vue";
 import Navbar from "@/components/Navbar";
+import { getColorScheme } from "@/services/StorageService";
+import { DefaultProps } from "vue/types/options";
+import { AlertData, AlertMethods } from "typings/routes/Alert";
 
-export default Vue.extend({
+export default Vue.extend<AlertData, AlertMethods, DefaultProps>({
   name: "Alert",
-  components: { Navbar }
+  components: { Navbar },
+  data() {
+    const colorScheme = getColorScheme();
+
+    return {
+      navbarColor: colorScheme.navbarColor
+    };
+  }
 });
 </script>
 
