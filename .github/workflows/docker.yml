@@ -68,11 +68,12 @@ jobs:
       - name: log in to ghcr
         uses: docker/login-action@v1
         with:
-          username: mathisburger
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registy: ghcr.io
+          username: bluelight-org
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: build and push
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mathisburger/bluelight-backend:latest
+          tags: ghcr.io/bluelight.org/frontend:latest
 
