@@ -1,4 +1,4 @@
-FROM node:14.15.4
+FROM node:14.15.4 AS build
 
 WORKDIR /build
 
@@ -7,9 +7,13 @@ COPY . .
 RUN yarn install
 RUN yarn build
 
-RUN npm i -g serve
+FROM node:14-alpine AS final
 
-RUN rm -r ./node_modules
+RUN mkdir dist
+
+COPY --from=build ./build/dist ./dist
+
+RUN npm i -g serve
 
 EXPOSE 5000
 

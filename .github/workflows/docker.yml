@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: yarn install
 
-      - run: yarn test -- --no-watch --no-progress --browsers=ChromeHeadless
+      - run: yarn test --no-watch --no-progress --browsers=ChromeHeadless
 
   build:
     needs: [ lint, test ]

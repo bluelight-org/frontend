@@ -6,6 +6,7 @@ import Login from "./routes/Login.vue";
 import Register from "./routes/Register.vue";
 import NotFound from "./routes/NotFound.vue";
 import Dashboard from "./routes/Dashboard.vue";
+import Alert from "./routes/Alert.vue";
 
 export default new Router({
   mode: "history",
@@ -26,6 +27,16 @@ export default new Router({
       path: "/dashboard",
       name: "Dashboard",
       component: Dashboard
+    },
+    {
+      path: "/",
+      name: "Dashboard",
+      component: Dashboard
+    },
+    {
+      path: "/alert",
+      name: "Alert",
+      component: Alert
     },
     {
       path: "*",

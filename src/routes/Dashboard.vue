@@ -14,7 +14,6 @@ export default Vue.extend<DashboardData, DashboardMethods, DefaultProps>({
   name: "Dashboard",
   data() {
     const colorScheme = getColorScheme();
-
     return {
       navbarColor: colorScheme.navbarColor
     };
