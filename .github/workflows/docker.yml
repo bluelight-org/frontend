@@ -29,7 +29,7 @@ jobs:
 
       - run: yarn lint
   build:
-    needs: [ lint, test ]
+    needs: [ lint ]
     runs-on: ubuntu-latest
 
     steps:
