@@ -28,12 +28,12 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li :class="['nav-item', this.active === 'dashboard' ? 'active' : '']">
-          <a class="nav-link" :href="hrefBase + 'dashboard'"
+          <a class="nav-link" href="/dashboard"
             >Dashboard <span class="sr-only">(current)</span>
           </a>
         </li>
         <li :class="['nav-item', this.active === 'alert' ? 'active' : '']">
-          <a class="nav-link" :href="hrefBase + 'alert'"
+          <a class="nav-link" href="/alert"
             >Alert <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -63,8 +63,8 @@ export default Vue.extend<
     const colorScheme = getColorScheme();
 
     return {
-      navbarColor: colorScheme.navbarColor,
-      hrefBase: process.env.NODE_ENV === "production" ? "/frontend/" : "/"
+      // Colors
+      navbarColor: colorScheme.navbarColor
     };
   },
   methods: {},
