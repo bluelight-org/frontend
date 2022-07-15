@@ -8,7 +8,7 @@ import NotFound from "./routes/NotFound.vue";
 import Dashboard from "./routes/Dashboard.vue";
 import Alert from "./routes/Alert.vue";
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
 
@@ -26,17 +26,26 @@ export default new Router({
     {
       path: "/dashboard",
       name: "Dashboard",
-      component: Dashboard
+      component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/",
       name: "Dashboard",
-      component: Dashboard
+      component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/alert",
       name: "Alert",
-      component: Alert
+      component: Alert,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "*",
@@ -45,3 +54,20 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem("accessToken")) {
+      next();
+    } else {
+      next({
+        params: { nextUrl: to.fullPath },
+        name: "Login"
+      });
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

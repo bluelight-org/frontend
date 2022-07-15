@@ -82,7 +82,9 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
             duration: 1000
           });
         } else {
-          location.href = "/dashboard";
+          if (this.$route.params.nextUrl)
+            this.$router.push(this.$route.params.nextUrl);
+          else this.$router.push("/dashboard");
         }
       });
     }

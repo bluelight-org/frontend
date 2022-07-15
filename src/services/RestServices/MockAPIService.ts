@@ -32,6 +32,9 @@ export class MockAPIService implements RestServiceInterface {
   // returns a promise of True,
   // if username and password are matching
   async login(username: string, password: string): Promise<boolean> {
+    if(username === "root" && password === "Admin123") {
+      localStorage.setItem("accessToken", "root");
+    }
     return username == "root" && password == "Admin123";
   }
 
