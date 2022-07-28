@@ -45,6 +45,8 @@ import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   name: "ThemeToggler",
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   data() {
     const colorScheme = getColorScheme();
     return {

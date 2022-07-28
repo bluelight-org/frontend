@@ -4,8 +4,8 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 /* eslint-disable @typescript-eslint/no-empty-interface */
 export interface ThemeTogglerData {
   togglerColor: string;
-  lightIcon: IconDefinition;
-  darkIcon: IconDefinition;
+  faSun;
+  faMoon;
 }
 
 export interface ThemeTogglerMethods {

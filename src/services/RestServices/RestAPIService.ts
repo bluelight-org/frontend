@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { AccessToken } from "./../../../typings/api/models/accessToken.d";
+import { AccessToken } from "../../../typings/api/models/accessToken";
 import { RestServiceInterface } from "../../../typings/RestServiceInterface";
 import { ErrorResponse } from "../../../typings/api/responses/ErrorResponse";
 import { CreateProfile } from "../../../typings/api/responses/createProfile";
@@ -107,7 +107,7 @@ export class RestAPIService implements RestServiceInterface {
   // ----------------------------------------------------
   // Downside are all functions needed for the
   // refresh token implementation of the bluelight frontend
-  // for the communication with the bluelight frontend
+  // for the communication with the bluelight backend
   // ----------------------------------------------------
 
     private static accessToken: AccessToken;
@@ -115,6 +115,9 @@ export class RestAPIService implements RestServiceInterface {
     // This function fetches a new accessToken from the 
     // backend, if the old expired
     private static getAccessToken(): Promise<AccessToken> {
+        // TODO: rework this.
+        // Also: Why do we use the username as the refresh token?
+        // Another point: You use a function req to fetch it, but req requires the token anyway or tries to get it.
         return this.get<AccessToken>("/auth/accesstoken?username=" + localStorage.getItem("username"));
     }
 

@@ -1,11 +1,9 @@
 name: GH-Pages
 
 on:
-  pull_request:
+  release:
     types:
-      - closed
-    branches:
-      - master
+      - created
 
 jobs:
   gh-pages:
