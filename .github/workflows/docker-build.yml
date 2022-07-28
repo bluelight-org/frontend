@@ -1,12 +1,13 @@
-
-name: Main
+name: Docker build
 
 on:
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,24 +23,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - run: yarn install
 
-      - run: yarn lint
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build prod
-        run: yarn build
+      - run: yarn build
