@@ -3,12 +3,7 @@
     <button
       class="togglerButton"
       :style="
-        'background: ' +
-          togglerColor +
-          ';filter: ' +
-          getToggleButtonFilter('light') +
-          ';color: ' +
-          getIconColor()
+        `filter:${getToggleButtonFilter('light')};color:${getIconColor()}`
       "
       v-on:click="changeTheme('light')"
     >
@@ -16,14 +11,7 @@
     </button>
     <button
       class="togglerButton"
-      :style="
-        'background: ' +
-          togglerColor +
-          ';filter: ' +
-          getToggleButtonFilter('dark') +
-          ';color: ' +
-          getIconColor()
-      "
+      :style="`filter:${getToggleButtonFilter('dark')};color:${getIconColor()}`"
       v-on:click="changeTheme('dark')"
     >
       <font-awesome-icon :icon="darkIcon" size="2x"></font-awesome-icon>
@@ -100,5 +88,6 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   border-radius: 5px;
   background: none;
   border: none;
+  background: var(--themeTogglerColor);
 }
 </style>

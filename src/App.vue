@@ -1,8 +1,8 @@
 <template>
   <!-- defined base app -->
-  <div id="app">
+  <div id="app" :style="computedCssVars">
     <!-- router outlet component -->
-    <router-view :style="computedCssVars"></router-view>
+    <router-view></router-view>
     <notifications group="notification" position="bottom right" />
     <ThemeToggler v-if="themeTogglerEnabled"></ThemeToggler>
   </div>
