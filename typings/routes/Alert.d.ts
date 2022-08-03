@@ -7,5 +7,8 @@ export interface AlertData {
 }
 
 export interface AlertMethods {
+  /**
+   * Gets all available vehicles
+   */
   getAvailibleVehicles(): Promise<Vehicle[]>;
 }
