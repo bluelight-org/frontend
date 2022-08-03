@@ -57,7 +57,9 @@ export default Vue.extend<AlertData, AlertMethods, DefaultProps>({
   },
   methods: {
     async getAvailibleVehicles(): Promise<Vehicle[]> {
-      return ((await this.APISerice.getAllVehicles(1)) as GetAllVehicles).data;
+      return ((await this.APISerice.getAllVehiclesOfStation(
+        1
+      )) as GetAllVehicles).data;
     }
   }
 });

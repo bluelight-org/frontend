@@ -15,7 +15,7 @@ import { UpdateProfile } from "../../../typings/api/responses/updateProfile";
 import { UpdateStation } from "../../../typings/api/responses/updateStation";
 import { UpdateMission } from "../../../typings/api/responses/updateMission";
 
-const PREFIX = process.env.API_ORIGIN;
+const PREFIX = process.env.VUE_APP_API_ORIGIN;
 
 /**
  *

@@ -23,7 +23,7 @@ export class RestService implements RestServiceInterface {
 
   constructor() {
     this.service =
-      process.env.REST_SERVICE === "mock"
+      process.env.VUE_APP_REST_SERVICE === "mock"
         ? new MockAPIService()
         : new RestAPIService();
   }
