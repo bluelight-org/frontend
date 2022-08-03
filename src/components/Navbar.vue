@@ -5,7 +5,7 @@
   >
     <a class="navbar-brand" href="/dashboard">
       <img
-        src="@/assets/logo.png"
+        src="/logo.png"
         width="50"
         height="50"
         class="img-radius"
