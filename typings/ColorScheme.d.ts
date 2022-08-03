@@ -32,4 +32,12 @@ export interface ColorScheme {
    * The color of the theme toggler
    */
   themeTogglerColor: string;
+  /**
+   * The color of a dropdown menu
+   */
+  dropdownColor: string;
+  /**
+   * The color of a dropdown element
+   */
+  dropdownElementColor: string;
 }

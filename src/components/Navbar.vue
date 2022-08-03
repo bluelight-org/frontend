@@ -37,22 +37,7 @@
           </a>
         </li>
       </ul>
-      <div class="profile-select dropdown">
-        <img
-          src="default-pp.png"
-          alt="profile picture"
-          class="dropdown-toggle"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        />
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+      <ProfileDropdown />
     </div>
   </nav>
 </template>
@@ -66,6 +51,7 @@ import {
   NavbarProps
 } from "typings/components/Navbar";
 import { DefaultComputed } from "vue/types/options";
+import ProfileDropdown from "@/components/ProfileDropdown.vue";
 
 export default Vue.extend<
   NavbarData,
@@ -74,6 +60,7 @@ export default Vue.extend<
   NavbarProps
 >({
   name: "Navbar",
+  components: { ProfileDropdown },
   data() {
     const colorScheme = getColorScheme();
 
@@ -102,17 +89,5 @@ export default Vue.extend<
 }
 .nav-link {
   cursor: pointer;
-}
-.profile-select {
-  align-self: flex-end;
-}
-.profile-select img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background: white;
-}
-.dropdown-menu {
-  transform: translate(-75%, 0px);
 }
 </style>

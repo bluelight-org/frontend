@@ -15,7 +15,8 @@ export const German: TranslationInterface = {
     dashboard: "Dashboard",
     alert: "Alarmierungen",
     login: "Anmelden",
-    register: "Registrieren"
+    register: "Registrieren",
+    settings: "Einstellungen"
   },
   alert: {
     missionKeyword: "Einsatzstichwort",

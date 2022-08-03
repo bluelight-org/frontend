@@ -11,6 +11,7 @@ export interface TranslationInterface {
     alert: string;
     login: string;
     register: string;
+    settings: string;
   };
   alert: {
     missionKeyword: string;
