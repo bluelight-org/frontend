@@ -27,14 +27,13 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li :class="['nav-item', this.active === 'dashboard' ? 'active' : '']">
-          <a class="nav-link" @click="$router.push('Dashboard')">
-            Dashboard <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li :class="['nav-item', this.active === 'alert' ? 'active' : '']">
-          <a class="nav-link" @click="$router.push('Alert')">
-            Alert <span class="sr-only">(current)</span>
+        <li
+          v-for="item of navbarItems"
+          v-bind:key="item.id"
+          :class="['nav-item', active === item.id ? 'active' : '']"
+        >
+          <a class="nav-link" @click="$router.push(item.route)">
+            {{ item.name }} <span class="sr-only">(current)</span>
           </a>
         </li>
       </ul>
@@ -63,7 +62,11 @@ export default Vue.extend<
     const colorScheme = getColorScheme();
 
     return {
-      navbarColor: colorScheme.navbarColor
+      navbarColor: colorScheme.navbarColor,
+      navbarItems: [
+        { id: "dashboard", route: "Dashboard", name: "Dashboard" },
+        { id: "alert", route: "Alert", name: "Alert" }
+      ]
     };
   },
   methods: {},
