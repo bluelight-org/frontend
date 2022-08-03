@@ -37,7 +37,6 @@
 <script lang="ts">
 import Vue from "vue";
 import Navbar from "../components/Navbar.vue";
-import { getColorScheme } from "@/services/StorageService";
 import { DefaultProps } from "vue/types/options";
 import { AlertData, AlertMethods } from "typings/routes/Alert";
 import { Vehicle } from "typings/api/models/vehicle";
@@ -48,10 +47,8 @@ export default Vue.extend<AlertData, AlertMethods, DefaultProps>({
   name: "Alert",
   components: { Navbar },
   data() {
-    const colorScheme = getColorScheme();
     const service = new RestService();
     return {
-      navbarColor: colorScheme.navbarColor,
       APISerice: service
     };
   },
