@@ -7,10 +7,6 @@ interface NavbarItem {
      */
     id: string;
     /**
-     * The name of the item
-     */
-    name: string;
-    /**
      * The route of the item
      */
     route: string;

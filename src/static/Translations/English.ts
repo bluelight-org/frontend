@@ -6,5 +6,9 @@ import { TranslationInterface } from "../../../typings/TranslationInterface";
 export const English: TranslationInterface = {
   common: {
     password: "Password"
+  },
+  routes: {
+    dashboard: "Dashboard",
+    alert: "Alert"
   }
 };
