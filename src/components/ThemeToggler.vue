@@ -1,5 +1,5 @@
 <template>
-  <div class="togglerCard" :style="'background: ' + togglerColor">
+  <div class="togglerCard">
     <button
       class="togglerButton"
       :style="
@@ -33,7 +33,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import {
   ThemeTogglerData,
   ThemeTogglerMethods
@@ -48,9 +47,7 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data() {
-    const colorScheme = getColorScheme();
     return {
-      togglerColor: colorScheme.themeTogglerColor,
       lightIcon: faSun,
       darkIcon: faMoon
     };
@@ -95,6 +92,7 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   flex-direction: row;
   gap: 10px;
   padding: 10px;
+  background: var(--themeTogglerColor);
 }
 .togglerButton {
   width: 50px;

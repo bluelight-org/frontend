@@ -2,10 +2,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 export interface ThemeTogglerData {
   /**
-   * The color of the toggle element
-   */
-  togglerColor: string;
-  /**
    * The sun icon
    */
   faSun;
