@@ -16,4 +16,12 @@ export interface TranslationInterface {
     missionKeyword: string;
     stabWound: string;
   };
+  login: {
+    failedMessage: string;
+    wrongCredentials: string;
+  };
+  register: {
+    registrationFailed: string;
+    registrationSuccessful: string;
+  };
 }

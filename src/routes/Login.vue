@@ -76,8 +76,8 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
         if (!data) {
           this.$notify({
             group: "notification",
-            title: "login failed",
-            text: "wrong login credentials",
+            title: this.$t("login.loginFailed") as string,
+            text: this.$t("login.wrongCredentials") as string,
             type: "error",
             duration: 1000
           });

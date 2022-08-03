@@ -92,7 +92,7 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
           if (!data[0]) {
             this.$notify({
               group: "notification",
-              title: "registration failed",
+              title: this.$t("register.registrationFailed") as string,
               text: data[1],
               type: "error",
               duration: 1000
@@ -100,7 +100,7 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
           } else {
             this.$notify({
               group: "notification",
-              title: "registration was successful",
+              title: this.$t("register.registrationSuccessful") as string,
               text: data[1],
               type: "success",
               duration: 1000
