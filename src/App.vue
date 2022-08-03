@@ -12,6 +12,7 @@
 import Router from "./Router";
 import { getColorScheme } from "./services/StorageService";
 import ThemeToggler from "@/components/ThemeToggler.vue";
+import getConfiguration from "@/services/ConfigurationHandler";
 
 export default {
   name: "app",
@@ -19,7 +20,7 @@ export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
     return {
-      themeTogglerEnabled: process.env.VUE_APP_THEME_TOGGLER === "enabled"
+      themeTogglerEnabled: getConfiguration().themeTogglerEnabled
     };
   },
   created(): void {

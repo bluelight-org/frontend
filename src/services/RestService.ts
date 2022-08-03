@@ -1,6 +1,4 @@
 import { RestServiceInterface } from "typings/RestServiceInterface";
-import { MockAPIService } from "@/services/RestServices/MockAPIService";
-import { RestAPIService } from "@/services/RestServices/RestAPIService";
 import { CreateMission } from "../../typings/api/responses/createMission";
 import { ErrorResponse } from "../../typings/api/responses/ErrorResponse";
 import { CreateProfile } from "../../typings/api/responses/createProfile";
@@ -14,6 +12,11 @@ import { GetStation } from "../../typings/api/responses/getStation";
 import { UpdateMission } from "../../typings/api/responses/updateMission";
 import { UpdateProfile } from "../../typings/api/responses/updateProfile";
 import { UpdateStation } from "../../typings/api/responses/updateStation";
+import getConfiguration, {
+  RestServiceType
+} from "@/services/ConfigurationHandler";
+import { RestAPIService } from "@/services/RestServices/RestAPIService";
+import { MockAPIService } from "@/services/RestServices/MockAPIService";
 
 /**
  * The rest service that handles rest web requests
@@ -22,10 +25,17 @@ export class RestService implements RestServiceInterface {
   private service: RestServiceInterface;
 
   constructor() {
-    this.service =
-      process.env.VUE_APP_REST_SERVICE === "mock"
-        ? new MockAPIService()
-        : new RestAPIService();
+    switch (getConfiguration().restServiceType) {
+      case RestServiceType.rest:
+        this.service = new RestAPIService();
+        break;
+      case RestServiceType.mock:
+        this.service = new MockAPIService();
+        break;
+      default:
+        this.service = new MockAPIService();
+        break;
+    }
   }
   /**
    * @inheritDoc

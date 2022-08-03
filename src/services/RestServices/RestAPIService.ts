@@ -14,8 +14,9 @@ import { GetStation } from "../../../typings/api/responses/getStation";
 import { UpdateProfile } from "../../../typings/api/responses/updateProfile";
 import { UpdateStation } from "../../../typings/api/responses/updateStation";
 import { UpdateMission } from "../../../typings/api/responses/updateMission";
+import getConfiguration from "@/services/ConfigurationHandler";
 
-const PREFIX = process.env.VUE_APP_API_ORIGIN;
+const PREFIX = getConfiguration().apiOrigin;
 
 /**
  *

@@ -1,19 +1,20 @@
 import { ColorScheme } from "../../typings/ColorScheme";
 import { Lightmode } from "@/static/ColorThemes/Lighmode";
 import { Darkmode } from "@/static/ColorThemes/Darkmode";
+import getConfiguration from "@/services/ConfigurationHandler";
 
-// This function reads the active ColorScheme
-// from the local storage and returns it
-// to the end user
+/**
+ * Gets the current color theme
+ */
 export function getColorScheme(): ColorScheme {
   if (process.env.VUE_APP_THEME_TOGGLER !== "enabled")
-    return getTheme(process.env.VUE_APP_DEFAULT_THEME);
+    return getTheme(getConfiguration().defaultTheme);
 
   const scheme = localStorage.getItem("color-scheme");
   if (scheme != null) {
     return getTheme(scheme);
   } else {
-    localStorage.setItem("color-scheme", process.env.VUE_APP_DEFAULT_THEME);
+    localStorage.setItem("color-scheme", getConfiguration().defaultTheme);
     return getColorScheme();
   }
 }
