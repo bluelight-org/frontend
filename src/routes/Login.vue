@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card align-content-center" :style="{ background: cardColor }">
       <div class="card-body" :style="{ background: cardColor }">
-        <h1 class="card-title">Login</h1>
+        <h1 class="card-title">{{ $t("routes.login") }}</h1>
         <input
           class="form-control"
           :style="{
@@ -10,7 +10,7 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="Username"
+          v-bind:placeholder="$t('common.username')"
           type="text"
           v-model="usernameValue"
         />
@@ -34,9 +34,9 @@
             }"
             v-on:click="login(usernameValue, passwordValue)"
           >
-            Anmelden
+            {{ $t("routes.login") }}
           </button>
-          <a href="/register">Register</a>
+          <a href="/register">{{ $t("routes.register") }}</a>
         </div>
       </div>
     </div>

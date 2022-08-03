@@ -7,11 +7,14 @@ export const German: TranslationInterface = {
   common: {
     password: "Passwort",
     address: "Adresse",
-    city: "Ort / Stadt"
+    city: "Ort / Stadt",
+    username: "Nutzername"
   },
   routes: {
     dashboard: "Dashboard",
-    alert: "Alarmierungen"
+    alert: "Alarmierungen",
+    login: "Anmelden",
+    register: "Registrieren"
   },
   alert: {
     missionKeyword: "Einsatzstichwort",
