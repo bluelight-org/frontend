@@ -1,6 +1,11 @@
 export enum RestServiceType {
-  mock,
-  rest
+  mock = "mock",
+  rest = "rest"
+}
+
+export enum SystemLanguage {
+  german = "german",
+  english = "english"
 }
 
 export interface Configuration {
@@ -20,19 +25,21 @@ export interface Configuration {
    * The default theme
    */
   defaultTheme: string;
+  /**
+   * The default language of the installation
+   */
+  defaultLanguage: SystemLanguage;
 }
 
 /**
  * Gets the configurations from the .env
  */
 const getConfiguration = (): Configuration => ({
-  restServiceType:
-    process.env.VUE_APP_REST_SERVICE === "mock"
-      ? RestServiceType.mock
-      : RestServiceType.rest,
+  restServiceType: process.env.VUE_APP_REST_SERVICE,
   apiOrigin: process.env.VUE_APP_API_ORIGIN,
   themeTogglerEnabled: process.env.VUE_APP_THEME_TOGGLER === "enabled",
-  defaultTheme: process.env.VUE_APP_DEFAULT_THEME
+  defaultTheme: process.env.VUE_APP_DEFAULT_THEME,
+  defaultLanguage: process.env.VUE_DEFAULT_LANGUAGE
 });
 
 export default getConfiguration;
