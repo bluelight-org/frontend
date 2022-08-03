@@ -1,12 +1,12 @@
 :root {
-    --background: "#161616";
-    --buttonColor: "#03397e";
-    --cardColor: "#222222";
-    --dropdownColor: "#313131";
-    --dropdownElementColor: "#1a3391";
-    --inputBorderColor: "#2d2d2d";
-    --inputColor: "#2d2d2d";
-    --navbarColor: "#AD0202";
-    --textColor: "white";
-    --themeTogglerColor: "#cdcdcd";
+    --background: "#fff";
+    --buttonColor: "#fff";
+    --cardColor: "#fff";
+    --dropdownColor: "#fff";
+    --dropdownElementColor: "#fff";
+    --inputBorderColor: "#fff";
+    --inputColor: "#fff";
+    --navbarColor: "#fff";
+    --textColor: "#fff";
+    --themeTogglerColor: "#fff";
 }

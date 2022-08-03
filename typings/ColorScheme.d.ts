@@ -1,4 +1,9 @@
-// interface for color schemes
+/**
+ * interface for color schemes
+ *
+ * NOTE: If you want to have intellisense enabled, add your
+ * variables also to the baseVariables.css file.
+ */
 export interface ColorScheme {
   /**
    * Background color of the whole app
