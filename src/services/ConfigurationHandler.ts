@@ -3,11 +3,6 @@ export enum RestServiceType {
   rest = "rest"
 }
 
-export enum SystemLanguage {
-  german = "german",
-  english = "english"
-}
-
 export interface Configuration {
   /**
    * The type of the rest theme
@@ -28,7 +23,7 @@ export interface Configuration {
   /**
    * The default language of the installation
    */
-  defaultLanguage: SystemLanguage;
+  defaultLanguage: string;
 }
 
 /**
@@ -39,7 +34,7 @@ const getConfiguration = (): Configuration => ({
   apiOrigin: process.env.VUE_APP_API_ORIGIN,
   themeTogglerEnabled: process.env.VUE_APP_THEME_TOGGLER === "enabled",
   defaultTheme: process.env.VUE_APP_DEFAULT_THEME,
-  defaultLanguage: process.env.VUE_DEFAULT_LANGUAGE
+  defaultLanguage: process.env.VUE_APP_DEFAULT_LANGUAGE
 });
 
 export default getConfiguration;

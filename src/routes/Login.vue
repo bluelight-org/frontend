@@ -21,7 +21,7 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="Password"
+          v-bind:placeholder="$t('common.password')"
           type="password"
           v-model="passwordValue"
         />
