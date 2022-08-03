@@ -1,10 +1,4 @@
 export interface RegisterData {
-  cardColor: string;
-  inputColor: string;
-  inputBorderColor: string;
-  buttonColor: string;
-  textColor: string;
-
   usernameValue: string;
   passwordValue: string;
   passwordRetypeValue: string;
