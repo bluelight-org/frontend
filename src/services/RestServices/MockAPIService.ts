@@ -26,11 +26,13 @@ import { generateUpdateProfileMock } from "@/mock/api/responses/updateProfile";
 import { UpdateStation } from "../../../typings/api/responses/updateStation";
 import { generateUpdateStationMock } from "@/mock/api/responses/updateStation";
 
-// mock service || simulates API responses
+/**
+ * Simulates API responses for the development process
+ */
 export class MockAPIService implements RestServiceInterface {
-  // The login mock endpoint
-  // returns a promise of True,
-  // if username and password are matching
+  /**
+   * @inheritDoc
+   */
   async login(username: string, password: string): Promise<boolean> {
     if(username === "root" && password === "Admin123") {
       localStorage.setItem("accessToken", "root");
@@ -38,9 +40,9 @@ export class MockAPIService implements RestServiceInterface {
     return username == "root" && password == "Admin123";
   }
 
-  // The register service returns
-  // a static promise of [boolean, string]
-  // without validating any data
+  /**
+   * @inheritDoc
+   */
   async register(
     username: string,
     password: string,
@@ -49,10 +51,9 @@ export class MockAPIService implements RestServiceInterface {
     return [password === retypePassword, username];
   }
 
-  // The create mission endpoint
-  // returns a static promise of
-  // the CreateMission type. It returns
-  // the generated example mock
+  /**
+   * @inheritDoc
+   */
   createMission(
     address: string,
     latitude: number,
@@ -65,10 +66,9 @@ export class MockAPIService implements RestServiceInterface {
       generateCreateMissionMock()
     );
   }
-  // The create profile endpoint
-  // returns a static promise of
-  // the CreateProfile type. It returns
-  // the generated example mock
+  /**
+   * @inheritDoc
+   */
   createProfile(
     name: string,
     email: string,
@@ -78,10 +78,9 @@ export class MockAPIService implements RestServiceInterface {
       generateCreateProfileMock()
     );
   }
-  // The create station endpoint
-  // returns a static promise of
-  // the CreateStation type. It returns
-  // the generated example mock
+  /**
+   * @inheritDoc
+   */
   createStation(
     name: string,
     latitude: number,
@@ -91,11 +90,10 @@ export class MockAPIService implements RestServiceInterface {
       generateCreateStationMock()
     );
   }
-  // The create vehicle endpoint
-  // returns a static promise of
-  // the CreateVehicle type. It returns
-  // the generated example mock
-  createVehicle(
+  /**
+   * @inheritDoc
+   */
+  createVehicleOnStation(
     station_id: number,
     name: string,
     type: string
@@ -104,89 +102,83 @@ export class MockAPIService implements RestServiceInterface {
       generateCreateVehicleMock()
     );
   }
-  // The delete all missions endpoint
-  // returns a static promise of
-  // the boolean type.
+  /**
+   * @inheritDoc
+   */
   deleteAllMissions(): Promise<boolean> {
     return Promise.resolve(false);
   }
-  // The delete all stations endpoint
-  // returns a static promise of
-  // the null type.
+  /**
+   * @inheritDoc
+   */
   deleteAllStations(): Promise<null> {
     return Promise.resolve(null);
   }
-  // The delete all vehicles endpoint
-  // returns a static promise of
-  // the null type.
-  deleteAllVehicles(station_id: number): Promise<ErrorResponse | null> {
+  /**
+   * @inheritDoc
+   */
+  deleteAllVehiclesOfStation(station_id: number): Promise<ErrorResponse | null> {
     return Promise.resolve(null);
   }
-  // The delete mission endpoint
-  // returns a static promise of
-  // the null type.
+  /**
+   * @inheritDoc
+   */
   deleteMission(id: number): Promise<ErrorResponse | null> {
     return Promise.resolve(null);
   }
-  // The delete profile endpoint
-  // returns a static promise of
-  // the null type.
+  /**
+   * @inheritDoc
+   */
   deleteProfile(): Promise<null> {
     return Promise.resolve(null);
   }
-  // The delete station endpoint
-  // returns a static promise of
-  // the null type.
+  /**
+   * @inheritDoc
+   */
   deleteStation(id: number): Promise<ErrorResponse | null> {
     return Promise.resolve(null);
   }
-  // The get all missions endpoint
-  // returns a static promise of
-  // the GetAllMissionsResponse type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   getAllMissions(): Promise<GetAllMissionsResponse> {
     return new Promise<GetAllMissionsResponse>(() =>
       generateGetAllMissionsResponseMock()
     );
   }
-  // The get all stations endpoint
-  // returns a static promise of
-  // the GetAllStations type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   getAllStations(): Promise<GetAllStations> {
     return new Promise<GetAllStations>(() => generateGetAllStationsMock());
   }
-  // The get all vehicles endpoint
-  // returns a static promise of
-  // the GetAllVehicles type.
-  // It returns the generated example mock
-  getAllVehicles(station_id: number): Promise<GetAllVehicles | ErrorResponse> {
+  /**
+   * @inheritDoc
+   */
+  getAllVehiclesOfStation(station_id: number): Promise<GetAllVehicles | ErrorResponse> {
     return new Promise<GetAllVehicles | ErrorResponse>(() =>
       generateGetAllVehiclesMock()
     );
   }
-  // The get mission endpoint
-  // returns a static promise of
-  // the GetMission type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   getMission(id: number): Promise<GetMission | ErrorResponse> {
     return new Promise<GetMission | ErrorResponse>(() =>
       generateGetMissionMock()
     );
   }
-  // The get station endpoint
-  // returns a static promise of
-  // the GetStation type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   getStation(id: number): Promise<GetStation | ErrorResponse> {
     return new Promise<GetStation | ErrorResponse>(() =>
       generateGetStationMock()
     );
   }
-  // The update mission endpoint
-  // returns a static promise of
-  // the UpdateMission type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   updateMission(
     address: string,
     latitude: number,
@@ -200,10 +192,9 @@ export class MockAPIService implements RestServiceInterface {
       generateUpdateMissionMock()
     );
   }
-  // The update profile endpoint
-  // returns a static promise of
-  // the UpdateProfile type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   updateProfile(
     name: string,
     email: string
@@ -212,10 +203,9 @@ export class MockAPIService implements RestServiceInterface {
       generateUpdateProfileMock()
     );
   }
-  // The update station endpoint
-  // returns a static promise of
-  // the UpdateStation type.
-  // It returns the generated example mock
+  /**
+   * @inheritDoc
+   */
   updateStation(
     name: string,
     latitude: number,

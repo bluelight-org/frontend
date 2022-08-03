@@ -14,15 +14,23 @@ import { GetStation } from "../../../typings/api/responses/getStation";
 import { UpdateProfile } from "../../../typings/api/responses/updateProfile";
 import { UpdateStation } from "../../../typings/api/responses/updateStation";
 import { UpdateMission } from "../../../typings/api/responses/updateMission";
+import getConfiguration from "@/services/ConfigurationHandler";
 
-const PREFIX = process.env.NODE_ENV === "development" ? "http://127.0.0.1:8080/api": "/api";
+const PREFIX = getConfiguration().apiOrigin;
 
-// wrapper for the API
+/**
+ *
+ */
 export class RestAPIService implements RestServiceInterface {
-
+  /**
+   * @inheritDoc
+   */
   async login(username: string, password: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
+  /**
+   * @inheritDoc
+   */
   async register(
     username: string,
     password: string,
@@ -30,75 +38,111 @@ export class RestAPIService implements RestServiceInterface {
   ): Promise<[boolean, string]> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   createMission(address: string, latitude: number, longitude: number, keyword: string, details: string, vehicles: number[]): Promise<CreateMission | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   createProfile(name: string, email: string, password: string): Promise<CreateProfile | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   createStation(name: string, latitude: number, longitude: number): Promise<CreateStation | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
-  createVehicle(station_id: number, name: string, type: string): Promise<CreateVehicle | ErrorResponse> {
+  /**
+   * @inheritDoc
+   */
+  createVehicleOnStation(station_id: number, name: string, type: string): Promise<CreateVehicle | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   deleteAllMissions(): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   deleteAllStations(): Promise<null> {
     throw new Error("Method not implemented.");
   }
-
-  deleteAllVehicles(station_id: number): Promise<ErrorResponse | null> {
+  /**
+   * @inheritDoc
+   */
+  deleteAllVehiclesOfStation(station_id: number): Promise<ErrorResponse | null> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   deleteMission(id: number): Promise<ErrorResponse | null> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   deleteProfile(): Promise<null> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   deleteStation(id: number): Promise<ErrorResponse | null> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   getAllMissions(): Promise<GetAllMissionsResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   getAllStations(): Promise<GetAllStations> {
     throw new Error("Method not implemented.");
   }
-
-  getAllVehicles(station_id: number): Promise<GetAllVehicles | ErrorResponse> {
+  /**
+   * @inheritDoc
+   */
+  getAllVehiclesOfStation(station_id: number): Promise<GetAllVehicles | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   getMission(id: number): Promise<GetMission | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   getStation(id: number): Promise<GetStation | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   updateMission(address: string, latitude: number, longitude: number, keyword: string, details: string, vehicles: number[], alerted: boolean): Promise<UpdateMission | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   updateProfile(name: string, email: string): Promise<UpdateProfile | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
-
+  /**
+   * @inheritDoc
+   */
   updateStation(name: string, latitude: number, longitude: number): Promise<UpdateStation | ErrorResponse> {
     throw new Error("Method not implemented.");
   }
@@ -112,7 +156,7 @@ export class RestAPIService implements RestServiceInterface {
 
     private static accessToken: AccessToken;
 
-    // This function fetches a new accessToken from the 
+    // This function fetches a new accessToken from the
     // backend, if the old expired
     private static getAccessToken(): Promise<AccessToken> {
         // TODO: rework this.
