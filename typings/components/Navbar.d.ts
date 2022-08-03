@@ -14,10 +14,6 @@ interface NavbarItem {
 
 export interface NavbarData {
     /**
-     * The color of the navbar
-     */
-    navbarColor: string;
-    /**
      * All items of the navbar
      */
     navbarItems: NavbarItem[];

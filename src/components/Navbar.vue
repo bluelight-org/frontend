@@ -1,8 +1,5 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-dark"
-    :style="{ backgroundColor: navbarColor }"
-  >
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/dashboard">
       <img
         src="/logo.png"
@@ -44,7 +41,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import {
   NavbarData,
   NavbarMethods,
@@ -62,10 +58,7 @@ export default Vue.extend<
   name: "Navbar",
   components: { ProfileDropdown },
   data() {
-    const colorScheme = getColorScheme();
-
     return {
-      navbarColor: colorScheme.navbarColor,
       navbarItems: [
         { id: "dashboard", route: "Dashboard" },
         { id: "alert", route: "Alert" }
@@ -89,5 +82,8 @@ export default Vue.extend<
 }
 .nav-link {
   cursor: pointer;
+}
+.navbar {
+  background-color: var(--navbarColor);
 }
 </style>
