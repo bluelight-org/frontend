@@ -3,18 +3,18 @@
     <navbar active="alert"></navbar>
     <div class="container">
       <label>
-        Einsatzstichwort:
+        {{ $t("alert.missionKeyword") }}:
         <input
           type="text"
           class="form-control"
           id="commitment-keyword"
-          placeholder="RD 1 - Stichverletzung"
+          v-bind:placeholder="`RD 1 - ${$t('alert.stabWound')}`"
         />
       </label>
       <div class="row">
         <div class="col-md-6">
           <label>
-            Adresse:
+            {{ $t("common.address") }}:
             <input
               type="text"
               class="form-control"
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-6">
           <label>
-            Ort:
+            {{ $t("common.city") }}:
             <input type="text" class="form-control" placeholder="25746 Heide" />
           </label>
         </div>
