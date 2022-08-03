@@ -69,9 +69,6 @@ export default Vue.extend<AlertData, AlertMethods, DefaultProps>({
 .container {
   margin-top: 20px;
 }
-#commitment-keyword {
-  width: 80vw !important;
-}
 input[type="text"] {
   width: 200%;
 }
