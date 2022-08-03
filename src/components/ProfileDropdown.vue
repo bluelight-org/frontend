@@ -9,11 +9,7 @@
       aria-haspopup="true"
       aria-expanded="false"
     />
-    <div
-      class="dropdown-menu"
-      aria-labelledby="dropdownMenuButton"
-      :style="{ backgroundColor: dropdownColor }"
-    >
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a
         v-for="item in dropdownItems"
         class="dropdown-item"
@@ -33,7 +29,6 @@ import {
   ProfileDropdownMethods
 } from "typings/components/ProfileDropdown";
 import { DefaultProps } from "vue/types/options";
-import { getColorScheme } from "@/services/StorageService";
 
 export default Vue.extend<
   ProfileDropdownData,
@@ -43,11 +38,7 @@ export default Vue.extend<
   name: "ProfileDropdown",
 
   data() {
-    const colorScheme = getColorScheme();
     return {
-      dropdownColor: colorScheme.dropdownColor,
-      dropdownElementColor: colorScheme.dropdownElementColor,
-      textColor: colorScheme.textColor,
       dropdownItems: [{ id: "settings", route: "Settings" }]
     };
   },
@@ -67,5 +58,6 @@ export default Vue.extend<
 }
 .dropdown-menu {
   transform: translate(-75%, 0px);
+  background-color: var(--dropdownColor);
 }
 </style>

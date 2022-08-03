@@ -11,18 +11,6 @@ export interface DropdownItem {
 
 export interface ProfileDropdownData {
   /**
-   * The color of the dropdown menu
-   */
-  dropdownColor: string;
-  /**
-   * The color of a dropdown element
-   */
-  dropdownElementColor: string;
-  /**
-   * The default text color
-   */
-  textColor: string;
-  /**
    * All items of the dropdown
    */
   dropdownItems: DropdownItem[];
