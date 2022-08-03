@@ -7,6 +7,7 @@ import Register from "./routes/Register.vue";
 import NotFound from "./routes/NotFound.vue";
 import Dashboard from "./routes/Dashboard.vue";
 import Alert from "./routes/Alert.vue";
+import Settings from "./routes/Settings.vue";
 
 const router = new Router({
   mode: "history",
@@ -43,6 +44,14 @@ const router = new Router({
       path: "/alert",
       name: "Alert",
       component: Alert,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/settings",
+      name: "Settings",
+      component: Settings,
       meta: {
         requiresAuth: true
       }
