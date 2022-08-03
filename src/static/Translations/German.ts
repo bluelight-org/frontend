@@ -20,5 +20,13 @@ export const German: TranslationInterface = {
   alert: {
     missionKeyword: "Einsatzstichwort",
     stabWound: "Stichverletzung"
+  },
+  login: {
+    failedMessage: "Anmeldung fehlgeschlagen",
+    wrongCredentials: "Anmeldedaten falsch"
+  },
+  register: {
+    registrationFailed: "Registrierung fehlgeschlagen",
+    registrationSuccessful: "Registrierung erfolgreich"
   }
 };

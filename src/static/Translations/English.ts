@@ -5,10 +5,28 @@ import { TranslationInterface } from "../../../typings/TranslationInterface";
  */
 export const English: TranslationInterface = {
   common: {
-    password: "Password"
+    password: "Password",
+    address: "Address",
+    city: "City",
+    username: "Username",
+    retypePassword: "Retype password"
   },
   routes: {
     dashboard: "Dashboard",
-    alert: "Alert"
+    alert: "Alert",
+    login: "Login",
+    register: "Register"
+  },
+  alert: {
+    missionKeyword: "Mission keyword",
+    stabWound: "Stab wound"
+  },
+  login: {
+    failedMessage: "Login failed",
+    wrongCredentials: "Wrong login credentials"
+  },
+  register: {
+    registrationFailed: "Registration failed",
+    registrationSuccessful: "Registration successful"
   }
 };
