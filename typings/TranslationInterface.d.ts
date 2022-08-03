@@ -4,6 +4,7 @@ export interface TranslationInterface {
     address: string;
     city: string;
     username: string;
+    retypePassword: string;
   };
   routes: {
     dashboard: string;

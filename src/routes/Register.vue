@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card align-content-center" :style="{ background: cardColor }">
       <div class="card-body" :style="{ background: cardColor }">
-        <h1 class="card-title">Register</h1>
+        <h1 class="card-title">{{ $t("routes.register") }}</h1>
         <input
           class="form-control"
           :style="{
@@ -10,7 +10,7 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="Username"
+          v-bind:placeholder="$t('common.username')"
           type="text"
           v-model="usernameValue"
         />
@@ -21,7 +21,7 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="password"
+          v-bind:placeholder="$t('common.password')"
           type="password"
           v-model="passwordValue"
         />
@@ -32,7 +32,7 @@
             borderColor: inputBorderColor,
             color: textColor
           }"
-          placeholder="retype password"
+          v-bind:placeholder="$t('common.retypePassword')"
           type="password"
           v-model="passwordRetypeValue"
         />
@@ -47,9 +47,9 @@
               register(usernameValue, passwordValue, passwordRetypeValue)
             "
           >
-            register
+            {{ $t("routes.register") }}
           </button>
-          <a href="/login">Login</a>
+          <a href="/login">{{ $t("routes.login") }}</a>
         </div>
       </div>
     </div>

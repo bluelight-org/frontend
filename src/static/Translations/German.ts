@@ -8,7 +8,8 @@ export const German: TranslationInterface = {
     password: "Passwort",
     address: "Adresse",
     city: "Ort / Stadt",
-    username: "Nutzername"
+    username: "Nutzername",
+    retypePassword: "Passwort erneut eingeben"
   },
   routes: {
     dashboard: "Dashboard",
