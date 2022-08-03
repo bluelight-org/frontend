@@ -84,4 +84,7 @@ export default Vue.extend<
 .img-radius {
   border-radius: 5px;
 }
+.nav-link {
+  cursor: pointer;
+}
 </style>
