@@ -37,6 +37,22 @@
           </a>
         </li>
       </ul>
+      <div class="profile-select dropdown">
+        <img
+          src="default-pp.png"
+          alt="profile picture"
+          class="dropdown-toggle"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        />
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -86,5 +102,17 @@ export default Vue.extend<
 }
 .nav-link {
   cursor: pointer;
+}
+.profile-select {
+  align-self: flex-end;
+}
+.profile-select img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: white;
+}
+.dropdown-menu {
+  transform: translate(-75%, 0px);
 }
 </style>
