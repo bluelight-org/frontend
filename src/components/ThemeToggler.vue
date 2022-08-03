@@ -50,13 +50,15 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   data() {
     const colorScheme = getColorScheme();
     return {
-      // Colors
       togglerColor: colorScheme.themeTogglerColor,
       lightIcon: faSun,
       darkIcon: faMoon
     };
   },
   methods: {
+    /**
+     * @inheritDoc
+     */
     getActiveColorScheme(): string {
       const scheme = localStorage.getItem("color-scheme");
       return scheme === null ? "light" : scheme;
