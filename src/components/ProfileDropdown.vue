@@ -14,7 +14,7 @@
         v-for="item in dropdownItems"
         class="dropdown-item"
         :key="item.id"
-        :href="item.route"
+        @click="$router.push(item.route)"
       >
         {{ $t(`routes.${item.id}`) }}
       </a>
@@ -59,5 +59,11 @@ export default Vue.extend<
 .dropdown-menu {
   transform: translate(-75%, 0px);
   background-color: var(--dropdownColor);
+}
+.dropdown-item {
+  color: var(--textColor);
+}
+.dropdown-item:hover {
+  background: var(--dropdownElementColor);
 }
 </style>
