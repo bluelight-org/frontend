@@ -1,7 +1,10 @@
 <template>
   <div>
     <navbar active=""></navbar>
-    <div class="container"></div>
+    <div class="container">
+      <h1>{{ $t("routes.settings") }}</h1>
+      <ListGroupContentWrapper :items="listItems" />
+    </div>
   </div>
 </template>
 
@@ -10,15 +13,24 @@ import Vue from "vue";
 import { SettingsData, SettingsMethods } from "typings/routes/Settings";
 import { DefaultProps } from "vue/types/options";
 import Navbar from "@/components/Navbar.vue";
+import ListGroupContentWrapper from "@/components/ListGroupContentWrapper.vue";
 export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
   name: "Settings",
-  components: { Navbar },
+  components: { ListGroupContentWrapper, Navbar },
   data() {
-    return {};
+    return {
+      listItems: [
+        { id: "languageSettings", component: new HTMLButtonElement() }
+      ]
+    };
   },
 
   methods: {}
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: var(--textColor);
+}
+</style>

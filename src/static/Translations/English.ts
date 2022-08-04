@@ -29,5 +29,8 @@ export const English: TranslationInterface = {
   register: {
     registrationFailed: "Registration failed",
     registrationSuccessful: "Registration successful"
+  },
+  settings: {
+    languageSettings: "Language"
   }
 };

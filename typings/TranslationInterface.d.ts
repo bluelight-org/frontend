@@ -25,4 +25,7 @@ export interface TranslationInterface {
     registrationFailed: string;
     registrationSuccessful: string;
   };
+  settings: {
+    languageSettings: string;
+  };
 }

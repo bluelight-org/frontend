@@ -29,5 +29,8 @@ export const German: TranslationInterface = {
   register: {
     registrationFailed: "Registrierung fehlgeschlagen",
     registrationSuccessful: "Registrierung erfolgreich"
+  },
+  settings: {
+    languageSettings: "Sprache"
   }
 };
