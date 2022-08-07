@@ -28,6 +28,11 @@ export interface ListGroupContentWrapperProps {
    * All items that should be displayed in the content wrapper
    */
   items: ListGroupContentWrapperListItem[];
+  /**
+   * Whether the component uses window.location.search parameters
+   * to indicate which tab should be used.
+   */
+  locationSearchEnabled?: boolean
 }
 
 export interface ListGroupContentWrapperListItem {
@@ -39,4 +44,8 @@ export interface ListGroupContentWrapperListItem {
    * The component that should be displayed
    */
   component: VueConstructor;
+  /**
+   * The string that is used as search id
+   */
+  searchId?: string;
 }

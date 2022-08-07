@@ -25,10 +25,12 @@
 import Vue from "vue";
 import {
   ListGroupContentWrapperData,
+  ListGroupContentWrapperListItem,
   ListGroupContentWrapperMethods,
   ListGroupContentWrapperProps
 } from "typings/components/ListGroupContentWrapper";
 import { DefaultComputed } from "vue/types/options";
+import LocationFactory from "@/services/LocationFactory";
 export default Vue.extend<
   ListGroupContentWrapperData,
   ListGroupContentWrapperMethods,
@@ -37,12 +39,28 @@ export default Vue.extend<
 >({
   name: "ListGroupContentWrapper",
   data() {
+    let activeItem = this.$props.items[0].id;
+    if (this.$props.locationSearchEnabled) {
+      const searchId = LocationFactory.getParameterValue("tab");
+      activeItem = this.$props.items.filter(
+        (i: ListGroupContentWrapperListItem) => i.searchId === searchId
+      )[0].id;
+    }
+
     return {
-      activeItem: this.$props.items[0].id
+      activeItem: activeItem
     };
   },
   methods: {
     selectListItem: function(item: string) {
+      if (this.$props.locationSearchEnabled) {
+        const searchId = this.$props.items.filter(
+          (i: ListGroupContentWrapperListItem) => i.id === item
+        )[0].searchId;
+        LocationFactory.buildSearch(
+          new Map<string, string>([["tab", searchId]])
+        );
+      }
       this.activeItem = item;
     },
     getSelectedComponent: function() {
@@ -54,6 +72,10 @@ export default Vue.extend<
     items: {
       type: Array,
       required: true
+    },
+    locationSearchEnabled: {
+      type: Boolean,
+      required: false
     }
   }
 });

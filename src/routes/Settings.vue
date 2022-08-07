@@ -3,7 +3,10 @@
     <navbar active=""></navbar>
     <div class="container">
       <h1>{{ $t("routes.settings") }}</h1>
-      <ListGroupContentWrapper :items="listItems" />
+      <ListGroupContentWrapper
+        :items="listItems"
+        :location-search-enabled="true"
+      />
     </div>
   </div>
 </template>
@@ -23,11 +26,13 @@ export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
       listItems: [
         {
           id: this.$t("settings.profileSettings") as string,
-          component: LanguageSettings
+          component: LanguageSettings,
+          searchId: "profile"
         },
         {
           id: this.$t("settings.languageSettings") as string,
-          component: LanguageSettings
+          component: LanguageSettings,
+          searchId: "language"
         }
       ]
     };
