@@ -40,8 +40,8 @@ export default Vue.extend<
   name: "ListGroupContentWrapper",
   data() {
     let activeItem = this.$props.items[0].id;
-    if (this.$props.locationSearchEnabled) {
-      const searchId = LocationFactory.getParameterValue("tab");
+    const searchId = LocationFactory.getParameterValue("tab");
+    if (this.$props.locationSearchEnabled && searchId) {
       activeItem = this.$props.items.filter(
         (i: ListGroupContentWrapperListItem) => i.searchId === searchId
       )[0].id;
