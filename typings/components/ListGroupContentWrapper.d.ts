@@ -1,10 +1,12 @@
 /* eslint-disable */
 
+import { VueConstructor } from "vue";
+
 export interface ListGroupContentWrapperData {
   /**
    * The active list item
    */
-  activeItem: string;
+  activeItem: string|null;
 }
 
 export interface ListGroupContentWrapperMethods {
@@ -18,7 +20,7 @@ export interface ListGroupContentWrapperMethods {
   /**
    * Gets the component for the selected element
    */
-  getSelectedComponent(): HTMLElement;
+  getSelectedComponent(): VueConstructor;
 }
 
 export interface ListGroupContentWrapperProps {
@@ -36,5 +38,5 @@ export interface ListGroupContentWrapperListItem {
   /**
    * The component that should be displayed
    */
-  component: HTMLElement;
+  component: VueConstructor;
 }

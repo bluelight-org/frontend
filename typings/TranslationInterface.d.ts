@@ -27,5 +27,6 @@ export interface TranslationInterface {
   };
   settings: {
     languageSettings: string;
+    profileSettings: string;
   };
 }

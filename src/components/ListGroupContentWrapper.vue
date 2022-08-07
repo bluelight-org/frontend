@@ -1,19 +1,21 @@
 <template>
   <div class="container">
-    <div class="col-md-3">
-      <ul class="list-group">
-        <li
-          v-for="item in items"
-          :key="item.id"
-          :class="['list-group-item', activeItem === item.id ? 'active' : '']"
-          @click="selectListItem(item.id)"
-        >
-          {{ $t(`settings.${item.id}`) }}
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-9">
-      {{ getSelectedComponent() }}
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="list-group">
+          <li
+            v-for="item in items"
+            :key="item.id"
+            :class="['list-group-item', activeItem === item.id ? 'active' : '']"
+            @click="selectListItem(item.id)"
+          >
+            {{ item.id }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <component :is="getSelectedComponent()" />
+      </div>
     </div>
   </div>
 </template>
@@ -36,22 +38,16 @@ export default Vue.extend<
   name: "ListGroupContentWrapper",
   data() {
     return {
-      activeItem: ""
+      activeItem: this.$props.items[0].id
     };
   },
   methods: {
-    selectListItem: (item: string) => {
-      // @ts-ignore
+    selectListItem: function(item: string) {
       this.activeItem = item;
     },
-    getSelectedComponent: () => {
-      // @ts-ignore
-      let activeItem = this.activeItem;
-      // @ts-ignore
-      for (let item of this.items)
-        if (item.id === activeItem) return item.component;
-
-      return new HTMLDivElement();
+    getSelectedComponent: function() {
+      for (const item of this.$props.items)
+        if (item.id === this.activeItem) return item.component;
     }
   },
   props: {
@@ -59,12 +55,18 @@ export default Vue.extend<
       type: Array,
       required: true
     }
-  },
-  mounted() {
-    /*if (this.activeItem === "" && this.items.length > 0)
-      this.activeItem = this.items[0].id;*/
   }
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.list-group {
+  background: none;
+}
+.list-group-item {
+  background: none;
+}
+.list-group-item.active {
+  background: var(--dropdownElementColor);
+}
+</style>

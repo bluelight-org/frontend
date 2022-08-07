@@ -14,13 +14,21 @@ import { SettingsData, SettingsMethods } from "typings/routes/Settings";
 import { DefaultProps } from "vue/types/options";
 import Navbar from "@/components/Navbar.vue";
 import ListGroupContentWrapper from "@/components/ListGroupContentWrapper.vue";
+import LanguageSettings from "@/components/settings/LanguageSettings.vue";
 export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
   name: "Settings",
   components: { ListGroupContentWrapper, Navbar },
   data() {
     return {
       listItems: [
-        { id: "languageSettings", component: new HTMLButtonElement() }
+        {
+          id: this.$t("settings.profileSettings") as string,
+          component: LanguageSettings
+        },
+        {
+          id: this.$t("settings.languageSettings") as string,
+          component: LanguageSettings
+        }
       ]
     };
   },

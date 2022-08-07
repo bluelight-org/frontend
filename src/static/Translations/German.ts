@@ -31,6 +31,7 @@ export const German: TranslationInterface = {
     registrationSuccessful: "Registrierung erfolgreich"
   },
   settings: {
-    languageSettings: "Sprache"
+    languageSettings: "Sprache",
+    profileSettings: "Profil"
   }
 };
