@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar active=""></navbar>
-    <div class="container">
+    <div class="container parentContainer">
       <h1>{{ $t("routes.settings") }}</h1>
       <ListGroupContentWrapper
         :items="listItems"
@@ -18,6 +18,7 @@ import { DefaultProps } from "vue/types/options";
 import Navbar from "@/components/Navbar.vue";
 import ListGroupContentWrapper from "@/components/ListGroupContentWrapper.vue";
 import LanguageSettings from "@/components/settings/LanguageSettings.vue";
+import ProfileSettings from "@/components/settings/ProfileSettings.vue";
 export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
   name: "Settings",
   components: { ListGroupContentWrapper, Navbar },
@@ -26,7 +27,7 @@ export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
       listItems: [
         {
           id: this.$t("settings.profileSettings") as string,
-          component: LanguageSettings,
+          component: ProfileSettings,
           searchId: "profile"
         },
         {
@@ -45,5 +46,11 @@ export default Vue.extend<SettingsData, SettingsMethods, DefaultProps>({
 <style scoped>
 h1 {
   color: var(--textColor);
+}
+.container {
+  margin-top: 1em;
+}
+.container.parentContainer {
+  margin-top: 5em;
 }
 </style>
