@@ -5,6 +5,7 @@ export interface TranslationInterface {
     city: string;
     username: string;
     retypePassword: string;
+    save: string;
   };
   routes: {
     dashboard: string;
@@ -28,5 +29,8 @@ export interface TranslationInterface {
   settings: {
     languageSettings: string;
     profileSettings: string;
+    language: {
+      chooseLanguage: string;
+    };
   };
 }

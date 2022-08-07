@@ -9,7 +9,8 @@ export const English: TranslationInterface = {
     address: "Address",
     city: "City",
     username: "Username",
-    retypePassword: "Retype password"
+    retypePassword: "Retype password",
+    save: "Save"
   },
   routes: {
     dashboard: "Dashboard",
@@ -32,6 +33,9 @@ export const English: TranslationInterface = {
   },
   settings: {
     languageSettings: "Language",
-    profileSettings: "Profile"
+    profileSettings: "Profile",
+    language: {
+      chooseLanguage: "Choose language"
+    }
   }
 };

@@ -7,7 +7,7 @@ import Notifications from "vue-notification";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { initIcons } from "@/font-awsome";
 import VueI18n from "vue-i18n";
-import getTranslationConfiguration from "@/services/TranslationHandler";
+import TranslationHandler from "@/services/TranslationHandler";
 
 Vue.use(Bootstrap);
 Vue.use(Router);
@@ -23,5 +23,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
-  i18n: getTranslationConfiguration()
+  i18n: TranslationHandler.getTranslationConfiguration()
 }).$mount("#app");

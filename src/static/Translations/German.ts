@@ -9,7 +9,8 @@ export const German: TranslationInterface = {
     address: "Adresse",
     city: "Ort / Stadt",
     username: "Nutzername",
-    retypePassword: "Passwort erneut eingeben"
+    retypePassword: "Passwort erneut eingeben",
+    save: "Speichern"
   },
   routes: {
     dashboard: "Dashboard",
@@ -32,6 +33,9 @@ export const German: TranslationInterface = {
   },
   settings: {
     languageSettings: "Sprache",
-    profileSettings: "Profil"
+    profileSettings: "Profil",
+    language: {
+      chooseLanguage: "Sprache auswählen"
+    }
   }
 };
