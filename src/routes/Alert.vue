@@ -18,14 +18,18 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Poststraße 7"
+              :placeholder="$t('alert.addressPlaceholder')"
             />
           </label>
         </div>
         <div class="col-md-6">
           <label>
             {{ $t("common.city") }}:
-            <input type="text" class="form-control" placeholder="25746 Heide" />
+            <input
+              type="text"
+              class="form-control"
+              :placeholder="$t('alert.cityPlaceholder')"
+            />
           </label>
         </div>
       </div>
