@@ -21,7 +21,9 @@ export const English: TranslationInterface = {
   },
   alert: {
     missionKeyword: "Mission keyword",
-    stabWound: "Stab wound"
+    stabWound: "Stab wound",
+    addressPlaceholder: "Downstreet 25th",
+    cityPlaceholder: "1111 Testcity"
   },
   login: {
     failedMessage: "Login failed",

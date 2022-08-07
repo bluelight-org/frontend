@@ -21,7 +21,9 @@ export const German: TranslationInterface = {
   },
   alert: {
     missionKeyword: "Einsatzstichwort",
-    stabWound: "Stichverletzung"
+    stabWound: "Stichverletzung",
+    addressPlaceholder: "Musterstraße 25",
+    cityPlaceholder: "25746 Heide"
   },
   login: {
     failedMessage: "Anmeldung fehlgeschlagen",

@@ -5,13 +5,13 @@
         <h1 class="card-title">{{ $t("routes.login") }}</h1>
         <input
           class="form-control"
-          v-bind:placeholder="$t('common.username')"
+          :placeholder="$t('common.username')"
           type="text"
           v-model="usernameValue"
         />
         <input
           class="form-control"
-          v-bind:placeholder="$t('common.password')"
+          :placeholder="$t('common.password')"
           type="password"
           v-model="passwordValue"
         />

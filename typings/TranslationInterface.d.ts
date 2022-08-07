@@ -17,6 +17,8 @@ export interface TranslationInterface {
   alert: {
     missionKeyword: string;
     stabWound: string;
+    addressPlaceholder: string;
+    cityPlaceholder: string;
   };
   login: {
     failedMessage: string;

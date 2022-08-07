@@ -8,7 +8,7 @@
           type="text"
           class="form-control"
           id="commitment-keyword"
-          v-bind:placeholder="`RD 1 - ${$t('alert.stabWound')}`"
+          :placeholder="`RD 1 - ${$t('alert.stabWound')}`"
         />
       </label>
       <div class="row">
