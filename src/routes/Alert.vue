@@ -3,29 +3,33 @@
     <navbar active="alert"></navbar>
     <div class="container">
       <label>
-        Einsatzstichwort:
+        {{ $t("alert.missionKeyword") }}:
         <input
           type="text"
           class="form-control"
           id="commitment-keyword"
-          placeholder="RD 1 - Stichverletzung"
+          :placeholder="`RD 1 - ${$t('alert.stabWound')}`"
         />
       </label>
       <div class="row">
         <div class="col-md-6">
           <label>
-            Adresse:
+            {{ $t("common.address") }}:
             <input
               type="text"
               class="form-control"
-              placeholder="Poststraße 7"
+              :placeholder="$t('alert.addressPlaceholder')"
             />
           </label>
         </div>
         <div class="col-md-6">
           <label>
-            Ort:
-            <input type="text" class="form-control" placeholder="25746 Heide" />
+            {{ $t("common.city") }}:
+            <input
+              type="text"
+              class="form-control"
+              :placeholder="$t('alert.cityPlaceholder')"
+            />
           </label>
         </div>
       </div>
@@ -37,7 +41,6 @@
 <script lang="ts">
 import Vue from "vue";
 import Navbar from "../components/Navbar.vue";
-import { getColorScheme } from "@/services/StorageService";
 import { DefaultProps } from "vue/types/options";
 import { AlertData, AlertMethods } from "typings/routes/Alert";
 import { Vehicle } from "typings/api/models/vehicle";
@@ -48,10 +51,8 @@ export default Vue.extend<AlertData, AlertMethods, DefaultProps>({
   name: "Alert",
   components: { Navbar },
   data() {
-    const colorScheme = getColorScheme();
     const service = new RestService();
     return {
-      navbarColor: colorScheme.navbarColor,
       APISerice: service
     };
   },

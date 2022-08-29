@@ -1,42 +1,28 @@
 <template>
   <div class="container">
-    <div class="card align-content-center" :style="{ background: cardColor }">
-      <div class="card-body" :style="{ background: cardColor }">
-        <h1 class="card-title">Login</h1>
+    <div class="card align-content-center">
+      <div class="card-body">
+        <h1 class="card-title">{{ $t("routes.login") }}</h1>
         <input
           class="form-control"
-          :style="{
-            background: inputColor,
-            borderColor: inputBorderColor,
-            color: textColor
-          }"
-          placeholder="Username"
+          :placeholder="$t('common.username')"
           type="text"
           v-model="usernameValue"
         />
         <input
           class="form-control"
-          :style="{
-            background: inputColor,
-            borderColor: inputBorderColor,
-            color: textColor
-          }"
-          placeholder="Password"
+          :placeholder="$t('common.password')"
           type="password"
           v-model="passwordValue"
         />
         <div class="d-flex flex-column">
           <button
             class="btn btn-primary"
-            :style="{
-              backgroundColor: buttonColor,
-              borderColor: buttonColor
-            }"
             v-on:click="login(usernameValue, passwordValue)"
           >
-            Anmelden
+            {{ $t("routes.login") }}
           </button>
-          <a href="/register">Register</a>
+          <a href="/register">{{ $t("routes.register") }}</a>
         </div>
       </div>
     </div>
@@ -45,7 +31,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import { RestService } from "@/services/RestService";
 import { LoginData, LoginMethods } from "typings/routes/Login";
 import { DefaultProps } from "vue/types/options";
@@ -54,15 +39,7 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
   name: "Login",
 
   data() {
-    const colorScheme = getColorScheme();
     return {
-      // colors
-      cardColor: colorScheme.cardColor,
-      inputColor: colorScheme.inputColor,
-      inputBorderColor: colorScheme.inputBorderColor,
-      buttonColor: colorScheme.buttonColor,
-      textColor: colorScheme.textColor,
-
       // input values
       usernameValue: "",
       passwordValue: ""
@@ -76,8 +53,8 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
         if (!data) {
           this.$notify({
             group: "notification",
-            title: "login failed",
-            text: "wrong login credentials",
+            title: this.$t("login.loginFailed") as string,
+            text: this.$t("login.wrongCredentials") as string,
             type: "error",
             duration: 1000
           });
@@ -95,6 +72,10 @@ export default Vue.extend<LoginData, LoginMethods, DefaultProps>({
 <style scoped>
 .card {
   margin-top: 15%;
+  background: var(--cardColor);
+}
+.card-body {
+  background: var(--cardColor);
 }
 .card-title {
   text-align: center;
@@ -114,10 +95,17 @@ input::placeholder {
   padding: 13px;
   margin-left: 30%;
   margin-right: 30%;
+  background-color: var(--buttonColor);
+  border-color: var(--buttonColor);
 }
 a {
   display: grid;
   place-items: center;
   margin-top: 10px;
+}
+.form-control {
+  background: var(--inputColor);
+  border-color: var(--inputBorderColor);
+  color: var(--textColor);
 }
 </style>

@@ -1,14 +1,9 @@
 <template>
-  <div class="togglerCard" :style="'background: ' + togglerColor">
+  <div class="togglerCard">
     <button
       class="togglerButton"
       :style="
-        'background: ' +
-          togglerColor +
-          ';filter: ' +
-          getToggleButtonFilter('light') +
-          ';color: ' +
-          getIconColor()
+        `filter:${getToggleButtonFilter('light')};color:${getIconColor()}`
       "
       v-on:click="changeTheme('light')"
     >
@@ -16,14 +11,7 @@
     </button>
     <button
       class="togglerButton"
-      :style="
-        'background: ' +
-          togglerColor +
-          ';filter: ' +
-          getToggleButtonFilter('dark') +
-          ';color: ' +
-          getIconColor()
-      "
+      :style="`filter:${getToggleButtonFilter('dark')};color:${getIconColor()}`"
       v-on:click="changeTheme('dark')"
     >
       <font-awesome-icon :icon="darkIcon" size="2x"></font-awesome-icon>
@@ -33,7 +21,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import {
   ThemeTogglerData,
   ThemeTogglerMethods
@@ -48,9 +35,7 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data() {
-    const colorScheme = getColorScheme();
     return {
-      togglerColor: colorScheme.themeTogglerColor,
       lightIcon: faSun,
       darkIcon: faMoon
     };
@@ -95,6 +80,7 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   flex-direction: row;
   gap: 10px;
   padding: 10px;
+  background: var(--themeTogglerColor);
 }
 .togglerButton {
   width: 50px;
@@ -102,5 +88,6 @@ export default Vue.extend<ThemeTogglerData, ThemeTogglerMethods, DefaultProps>({
   border-radius: 5px;
   background: none;
   border: none;
+  background: var(--themeTogglerColor);
 }
 </style>

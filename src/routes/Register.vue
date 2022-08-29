@@ -1,55 +1,36 @@
 <template>
   <div class="container">
-    <div class="card align-content-center" :style="{ background: cardColor }">
-      <div class="card-body" :style="{ background: cardColor }">
-        <h1 class="card-title">Register</h1>
+    <div class="card align-content-center">
+      <div class="card-body">
+        <h1 class="card-title">{{ $t("routes.register") }}</h1>
         <input
           class="form-control"
-          :style="{
-            background: inputColor,
-            borderColor: inputBorderColor,
-            color: textColor
-          }"
-          placeholder="Username"
+          v-bind:placeholder="$t('common.username')"
           type="text"
           v-model="usernameValue"
         />
         <input
           class="form-control"
-          :style="{
-            background: inputColor,
-            borderColor: inputBorderColor,
-            color: textColor
-          }"
-          placeholder="password"
+          v-bind:placeholder="$t('common.password')"
           type="password"
           v-model="passwordValue"
         />
         <input
           class="form-control"
-          :style="{
-            background: inputColor,
-            borderColor: inputBorderColor,
-            color: textColor
-          }"
-          placeholder="retype password"
+          v-bind:placeholder="$t('common.retypePassword')"
           type="password"
           v-model="passwordRetypeValue"
         />
         <div class="d-flex flex-column">
           <button
             class="btn btn-primary"
-            :style="{
-              backgroundColor: buttonColor,
-              borderColor: buttonColor
-            }"
             v-on:click="
               register(usernameValue, passwordValue, passwordRetypeValue)
             "
           >
-            register
+            {{ $t("routes.register") }}
           </button>
-          <a href="/login">Login</a>
+          <a href="/login">{{ $t("routes.login") }}</a>
         </div>
       </div>
     </div>
@@ -58,7 +39,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import { RestService } from "@/services/RestService";
 import { RegisterData, RegisterMethods } from "typings/routes/Register";
 import { DefaultProps } from "vue/types/options";
@@ -67,16 +47,7 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
   name: "Register",
 
   data() {
-    const colorScheme = getColorScheme();
     return {
-      // colors
-      cardColor: colorScheme.cardColor,
-      inputColor: colorScheme.inputColor,
-      inputBorderColor: colorScheme.inputBorderColor,
-      buttonColor: colorScheme.buttonColor,
-      textColor: colorScheme.textColor,
-
-      // input values
       usernameValue: "",
       passwordValue: "",
       passwordRetypeValue: ""
@@ -84,7 +55,6 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
   },
 
   methods: {
-    // on click login function
     register(username: string, password: string, retypePassword: string): void {
       new RestService()
         .register(username, password, retypePassword)
@@ -92,7 +62,7 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
           if (!data[0]) {
             this.$notify({
               group: "notification",
-              title: "registration failed",
+              title: this.$t("register.registrationFailed") as string,
               text: data[1],
               type: "error",
               duration: 1000
@@ -100,7 +70,7 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
           } else {
             this.$notify({
               group: "notification",
-              title: "registration was successful",
+              title: this.$t("register.registrationSuccessful") as string,
               text: data[1],
               type: "success",
               duration: 1000
@@ -115,6 +85,10 @@ export default Vue.extend<RegisterData, RegisterMethods, DefaultProps>({
 <style scoped>
 .card {
   margin-top: 15%;
+  background: var(--cardColor);
+}
+.card-body {
+  background: var(--cardColor);
 }
 .card-title {
   text-align: center;
@@ -134,8 +108,14 @@ input::placeholder {
   padding: 13px;
   margin-left: 30%;
   margin-right: 30%;
+  background-color: var(--buttonColor);
+  border-color: var(--buttonColor);
 }
-
+.form-control {
+  background: var(--inputColor);
+  border-color: var(--inputBorderColor);
+  color: var(--textColor);
+}
 a {
   display: grid;
   place-items: center;

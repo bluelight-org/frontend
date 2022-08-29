@@ -1,4 +1,9 @@
-// interface for color schemes
+/**
+ * interface for color schemes
+ *
+ * NOTE: If you want to have intellisense enabled, add your
+ * variables also to the baseVariables.css file.
+ */
 export interface ColorScheme {
   /**
    * Background color of the whole app
@@ -32,4 +37,12 @@ export interface ColorScheme {
    * The color of the theme toggler
    */
   themeTogglerColor: string;
+  /**
+   * The color of a dropdown menu
+   */
+  dropdownColor: string;
+  /**
+   * The color of a dropdown element
+   */
+  dropdownElementColor: string;
 }

@@ -6,11 +6,14 @@ import VueResource from "vue-resource";
 import Notifications from "vue-notification";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { initIcons } from "@/font-awsome";
+import VueI18n from "vue-i18n";
+import TranslationHandler from "@/services/TranslationHandler";
 
 Vue.use(Bootstrap);
 Vue.use(Router);
 Vue.use(VueResource);
 Vue.use(Notifications);
+Vue.use(VueI18n);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
@@ -19,5 +22,6 @@ initIcons();
 Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  i18n: TranslationHandler.getTranslationConfiguration()
 }).$mount("#app");

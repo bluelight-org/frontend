@@ -10,4 +10,6 @@ export class Lightmode implements ColorScheme {
   buttonColor = "#007bff";
   navbarColor = "#EA0000";
   themeTogglerColor = "#3e3e3e";
+  dropdownColor = "#e7e7e7";
+  dropdownElementColor = "#007bff";
 }

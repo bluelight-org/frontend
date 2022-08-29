@@ -7,20 +7,12 @@ interface NavbarItem {
      */
     id: string;
     /**
-     * The name of the item
-     */
-    name: string;
-    /**
      * The route of the item
      */
     route: string;
 }
 
 export interface NavbarData {
-    /**
-     * The color of the navbar
-     */
-    navbarColor: string;
     /**
      * All items of the navbar
      */

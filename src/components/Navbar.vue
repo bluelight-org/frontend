@@ -1,11 +1,8 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-dark"
-    :style="{ backgroundColor: navbarColor }"
-  >
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/dashboard">
       <img
-        src="@/assets/logo.png"
+        src="/logo.png"
         width="50"
         height="50"
         class="img-radius"
@@ -33,23 +30,24 @@
           :class="['nav-item', active === item.id ? 'active' : '']"
         >
           <a class="nav-link" @click="$router.push(item.route)">
-            {{ item.name }} <span class="sr-only">(current)</span>
+            {{ $t(`routes.${item.id}`) }} <span class="sr-only">(current)</span>
           </a>
         </li>
       </ul>
+      <ProfileDropdown />
     </div>
   </nav>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { getColorScheme } from "@/services/StorageService";
 import {
   NavbarData,
   NavbarMethods,
   NavbarProps
 } from "typings/components/Navbar";
 import { DefaultComputed } from "vue/types/options";
+import ProfileDropdown from "@/components/ProfileDropdown.vue";
 
 export default Vue.extend<
   NavbarData,
@@ -58,14 +56,12 @@ export default Vue.extend<
   NavbarProps
 >({
   name: "Navbar",
+  components: { ProfileDropdown },
   data() {
-    const colorScheme = getColorScheme();
-
     return {
-      navbarColor: colorScheme.navbarColor,
       navbarItems: [
-        { id: "dashboard", route: "Dashboard", name: "Dashboard" },
-        { id: "alert", route: "Alert", name: "Alert" }
+        { id: "dashboard", route: "Dashboard" },
+        { id: "alert", route: "Alert" }
       ]
     };
   },
@@ -83,5 +79,11 @@ export default Vue.extend<
 <style scoped>
 .img-radius {
   border-radius: 5px;
+}
+.nav-link {
+  cursor: pointer;
+}
+.navbar {
+  background-color: var(--navbarColor);
 }
 </style>
