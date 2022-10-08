@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-interface NavbarItem {
+export interface NavbarItem {
     /**
      * The ID of the item
      */
@@ -10,16 +10,6 @@ interface NavbarItem {
      * The route of the item
      */
     route: string;
-}
-
-export interface NavbarData {
-    /**
-     * All items of the navbar
-     */
-    navbarItems: NavbarItem[];
-}
-
-export interface NavbarMethods {
 }
 
 export interface NavbarProps {

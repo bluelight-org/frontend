@@ -17,45 +17,29 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import {
-  LanguageSettingsData,
-  LanguageSettingsMethods
-} from "../../../typings/components/settings/LanguageSettings";
-import { DefaultComputed } from "vue/types/options";
+import { LanguageDefinition } from "../../../typings/components/settings/LanguageSettings";
 import TranslationHandler from "@/services/TranslationHandler";
 import getConfiguration from "@/services/ConfigurationHandler";
-export default Vue.extend<
-  LanguageSettingsData,
-  LanguageSettingsMethods,
-  DefaultComputed
->({
-  name: "LanguageSettings",
-  data() {
-    return {
-      languageOptions: [
-        {
-          id: "de",
-          name: "Deutsch"
-        },
-        {
-          id: "en",
-          name: "English (US)"
-        }
-      ],
-      currentLocale:
-        TranslationHandler.getCurrentLocale() ??
-        getConfiguration().defaultLanguage
-    };
+
+const currentLocale: string =
+  TranslationHandler.getCurrentLocale() ?? getConfiguration().defaultLanguage;
+
+const languageOptions: LanguageDefinition[] = [
+  {
+    id: "de",
+    name: "Deutsch",
   },
-  methods: {
-    onSettingsSave: function(e: Event) {
-      e.preventDefault();
-      TranslationHandler.setLocale(this.currentLocale);
-      window.location.reload();
-    }
-  }
-});
+  {
+    id: "en",
+    name: "English (US)",
+  },
+];
+
+function onSettingsSave(e: Event) {
+  e.preventDefault();
+  TranslationHandler.setLocale(currentLocale);
+  window.location.reload();
+}
 </script>
 
 <style scoped>

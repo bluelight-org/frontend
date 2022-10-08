@@ -40,40 +40,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import {
-  NavbarData,
-  NavbarMethods,
-  NavbarProps
-} from "typings/components/Navbar";
-import { DefaultComputed } from "vue/types/options";
-import ProfileDropdown from "@/components/ProfileDropdown.vue";
+import { defineExpose, defineProps } from "vue";
+import { NavbarItem, NavbarProps } from "typings/components/Navbar";
+const props = defineProps<NavbarProps>();
+const navbarItems: NavbarItem[] = [
+  { id: "dashboard", route: "Dashboard" },
+  { id: "alert", route: "Alert" },
+];
 
-export default Vue.extend<
-  NavbarData,
-  NavbarMethods,
-  DefaultComputed,
-  NavbarProps
->({
-  name: "Navbar",
-  components: { ProfileDropdown },
-  data() {
-    return {
-      navbarItems: [
-        { id: "dashboard", route: "Dashboard" },
-        { id: "alert", route: "Alert" }
-      ]
-    };
-  },
-  methods: {},
-
-  props: {
-    active: {
-      type: String,
-      required: true
-    }
-  }
-});
+defineExpose({ navbarItems });
 </script>
 
 <style scoped>
