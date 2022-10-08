@@ -20,64 +20,42 @@
   </div>
 </template>
 
-<script lang="ts">
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import Vue from "vue";
+<script setup lang="ts">
+import { defineProps, defineExpose } from "vue";
 import {
   ListGroupContentWrapperData,
   ListGroupContentWrapperListItem,
-  ListGroupContentWrapperMethods,
-  ListGroupContentWrapperProps
-} from "typings/components/ListGroupContentWrapper";
-import { DefaultComputed } from "vue/types/options";
+  ListGroupContentWrapperProps,
+} from "../../typings/components/ListGroupContentWrapper";
 import LocationFactory from "@/services/LocationFactory";
-export default Vue.extend<
-  ListGroupContentWrapperData,
-  ListGroupContentWrapperMethods,
-  DefaultComputed,
-  ListGroupContentWrapperProps
->({
-  name: "ListGroupContentWrapper",
-  data() {
-    let activeItem = this.$props.items[0].id;
-    const searchId = LocationFactory.getParameterValue("tab");
-    if (this.$props.locationSearchEnabled && searchId) {
-      activeItem = this.$props.items.filter(
-        (i: ListGroupContentWrapperListItem) => i.searchId === searchId
-      )[0].id;
-    }
+const props = defineProps<ListGroupContentWrapperProps>();
+let activeItem = props.items[0].id;
+const searchId = LocationFactory.getParameterValue("tab");
+if (props.locationSearchEnabled && searchId) {
+  activeItem = props.items.filter(
+    (i: ListGroupContentWrapperListItem) => i.searchId === searchId
+  )[0].id;
+}
 
-    return {
-      activeItem: activeItem
-    };
-  },
-  methods: {
-    selectListItem: function(item: string) {
-      if (this.$props.locationSearchEnabled) {
-        const searchId = this.$props.items.filter(
-          (i: ListGroupContentWrapperListItem) => i.id === item
-        )[0].searchId;
-        LocationFactory.buildSearch(
-          new Map<string, string>([["tab", searchId]])
-        );
-      }
-      this.activeItem = item;
-    },
-    getSelectedComponent: function() {
-      for (const item of this.$props.items)
-        if (item.id === this.activeItem) return item.component;
-    }
-  },
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    locationSearchEnabled: {
-      type: Boolean,
-      required: false
-    }
+function selectListItem(item: string): void {
+  if (props.locationSearchEnabled) {
+    const searchId: string =
+      props.items.filter(
+        (i: ListGroupContentWrapperListItem) => i.id === item
+      )[0].searchId ?? "";
+    LocationFactory.buildSearch(new Map<string, string>([["tab", searchId]]));
   }
+  activeItem = item;
+}
+
+function getSelectedComponent() {
+  for (const item of props.items)
+    if (item.id === activeItem) return item.component;
+}
+
+// Expose all component data by default
+defineExpose<ListGroupContentWrapperData>({
+  activeItem,
 });
 </script>
 
